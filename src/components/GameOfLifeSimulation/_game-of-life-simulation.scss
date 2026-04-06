@@ -1,0 +1,13 @@
+cmp-cgol-sim {
+    height: 100%;
+    width: 100%;
+
+    canvas {
+        image-rendering: pixelated;
+        margin-inline: auto;
+        min-height: 100vh;
+        min-width: 100vw;
+        scale: var(--scale, 1);
+        transform-origin: top left;
+    }
+}

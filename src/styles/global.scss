@@ -1,0 +1,37 @@
+* {
+  margin: unset;
+  padding: unset;
+  box-sizing: border-box;
+  display: block;
+}
+
+head,
+script,
+link,
+meta,
+title {
+  display: none;
+}
+
+body {
+  font-family: "Roboto Flex", "Montserrat", system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #e0e0e0;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+a {
+  color: #64b5f6;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

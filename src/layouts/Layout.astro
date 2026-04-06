@@ -1,0 +1,39 @@
+---
+import "../styles/main.scss";
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Roboto+Flex:opsz,wdth,wght,GRAD,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,25..151,100..1000,-200..150,27..175,323..603,25..135,-203,738,514,712&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <div class="page__background-canvas-container">
+            <cmp-cgol-sim width="5120" height="5120" scale="2"></cmp-cgol-sim>
+        </div>
+        <div class="content-wrapper">
+            <slot />
+        </div>
+
+        <script>
+            import "../components/GameOfLifeSimulation/GameOfLifeSimulation";
+        </script>
+    </body>
+</html>
