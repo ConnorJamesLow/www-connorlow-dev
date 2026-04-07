@@ -66,8 +66,8 @@ export class GameOfLifeSimulation extends HTMLElement {
         // Add some initial live cells for testing
         for (const [x, y] of [
             ...patterns.getLocalizedPattern('methuselahs', 'acorn', 20, 25),
-            ...patterns.getLocalizedPattern('oscillators', 'beacon', 130, 50),
-            ...patterns.getLocalizedPattern('spaceships', 'glider', 60, 100),
+            ...patterns.getLocalizedPattern('oscillators', 'beacon', 100, 48),
+            ...patterns.getLocalizedPattern('spaceships', 'glider', 80, 100),
             ...patterns.getLocalizedPattern('stills', 'block', 175, 25)
         ]) {
             game.addCell(x, y);
@@ -78,7 +78,7 @@ export class GameOfLifeSimulation extends HTMLElement {
         runAtFrameRate(() => {
             game.nextFrame();
             ctx?.putImageData(imageData, 0, 0);
-        }, 30);
+        }, 1);
     }
 }
 
