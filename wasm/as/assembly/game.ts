@@ -24,6 +24,10 @@ export class Game {
      * 
      */
     private rgbaBuffer!: Uint32Array;
+    /**
+     * The color of the live cells.
+     */
+    private _color: u32;
 
     public get imageBufferPointer(): usize {
         const rgbaBuffer = this.rgbaBuffer;
@@ -42,7 +46,15 @@ export class Game {
         return this.scale;
     }
 
-    public constructor(width: u32 = 5120, height: u32 = 5120, scale: u8 = 2) {
+    public get color(): u32 {
+        return this._color;
+    }
+
+    public set color(color: u32) {
+        this._color = color;
+    }
+
+    public constructor(width: u32 = 5120, height: u32 = 5120, scale: u8 = 2, color: u32 = 0xFFFFFFFF) {
         this.width = width;
         this.height = height;
         this.scale = scale;
@@ -52,6 +64,7 @@ export class Game {
         const cells = (this.width / this.scale) * (this.height / this.scale);
         this.grid = new Uint64Array(<i32>Math.ceil(cells / 64));
         this.rgbaBuffer = new Uint32Array(cells);
+        this._color = color;
     }
 
     public nextFrame(): void {
@@ -59,11 +72,18 @@ export class Game {
         this.visualize();
     }
 
-    public add(x: u32, y: u32): void {
+    public addCell(x: u32, y: u32): void {
         const index = (y * this.gridWidth + x) / 64;
         const bit = (y * this.gridWidth + x) % 64;
-        console.log(`Adding cell at (${x}, ${y}) - index: ${index}, bit: ${bit}`);
         this.grid[index] |= (1 << bit);
+    }
+
+    private step(): void {
+        for (let i: number = 0; i < this.grid.length; i++) {
+            const frame = this.grid[i];
+
+
+        }
     }
 
     /**
@@ -75,7 +95,7 @@ export class Game {
             const wordIndex = i / 64;
             const bit = i % 64;
             const alive = (this.grid[wordIndex] & ((<u64>1) << bit)) != 0;
-            this.rgbaBuffer[i] = alive ? 0xFFFFFFFF : 0xFF000000;
+            this.rgbaBuffer[i] = alive ? this.color : 0x00000000;
         }
     }
 }

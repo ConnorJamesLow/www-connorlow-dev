@@ -1,13 +1,11 @@
 import "./_game-of-life-simulation.scss";
-import * as game from "../../../wasm/as/build/release.js";
+import GameWrapper from "./game-wrapper.js";
 import * as patterns from "./patterns";
 import { runAtFrameRate } from "../../utils/animation.js";
 
-const { memory } = game;
-
 export class GameOfLifeSimulation extends HTMLElement {
     private canvas?: HTMLCanvasElement;
-    private gameId?: ReturnType<typeof game.createGame>;
+    private game: GameWrapper;
     get height() {
         return parseInt(this.getAttribute("height") || "5120");
     }
@@ -21,6 +19,11 @@ export class GameOfLifeSimulation extends HTMLElement {
     get cells() {
         const { width, height, scale } = this;
         return (width / scale) * (height / scale);
+    }
+
+    constructor() {
+        super();
+        this.game = new GameWrapper(this.width, this.height, this.scale, 0xFFFFFFFF);
     }
 
     connectedCallback() {
@@ -37,10 +40,6 @@ export class GameOfLifeSimulation extends HTMLElement {
         this.canvas = canvas;
         this.appendChild(canvas);
 
-        // Initialize the game
-        this.gameId = game.createGame(width, height, scale);
-        console.log('game initialized with id', this.gameId);
-
         // Draw some test shapes
         console.log('total cells:', this.cells);
         console.log('u64 array size:', this.cells / 64);
@@ -49,35 +48,35 @@ export class GameOfLifeSimulation extends HTMLElement {
     }
 
     private runSimulation() {
-        const { gameId, canvas } = this;
-        if (typeof gameId !== "number" || !canvas) {
+        const { game, canvas } = this;
+        if (!canvas) {
             return;
         }
 
         // Set up the video buffer to read from the WASM memory
-        const bufferPtr = game.getImageBufferPointer(gameId);
+        const bufferPtr = game.getImageBufferPointer();
         const ctx = canvas.getContext("2d");
         const videoView = new Uint8ClampedArray(
-            memory.buffer,
+            game.buffer,
             bufferPtr,
-            game.getCellCount(gameId) * 4
+            game.getCellCount() * 4
         );
         const imageData = new ImageData(videoView, canvas.width, canvas.height);
 
         // Add some initial live cells for testing
         for (const [x, y] of [
-            ...patterns.getLocalizedPattern('methuselahs', 'acorn', 100, 100),
-            ...patterns.getLocalizedPattern('oscillators', 'beacon', 115, 150),
-            ...patterns.getLocalizedPattern('spaceships', 'glider', 250, 250),
-            ...patterns.getLocalizedPattern('stills', 'block', 400, 400)
+            ...patterns.getLocalizedPattern('methuselahs', 'acorn', 20, 25),
+            ...patterns.getLocalizedPattern('oscillators', 'beacon', 130, 50),
+            ...patterns.getLocalizedPattern('spaceships', 'glider', 60, 100),
+            ...patterns.getLocalizedPattern('stills', 'block', 175, 25)
         ]) {
-            game.addCell(gameId, x, y);
+            game.addCell(x, y);
         }
 
 
         // Start the animation loop
         runAtFrameRate(() => {
-            game.nextFrame(gameId);
+            game.nextFrame();
             ctx?.putImageData(imageData, 0, 0);
         }, 30);
     }
