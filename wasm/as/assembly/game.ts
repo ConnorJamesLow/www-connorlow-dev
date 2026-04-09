@@ -84,71 +84,46 @@ export class Game {
     private step(): void {
         const framesPerRow: i32 = this.gridWidth / 64;
         const rows = this.grid.length / framesPerRow;
+        const adder = new BitAdder();
         for (let i: i32 = 0; i < this.grid.length; i++) {
             const frame = this.grid[i];
             const row = i / framesPerRow;
-            const col = i % framesPerRow;
-            let b0: u64 = 0;
-            let b1: u64 = 0;
-            let b2: u64 = 0;
 
             // Get north and south
-            let northFrame: u64 = row < 1 ? 0x0 : this.grid[i - framesPerRow];
-            let southFrame: u64 = rows > row + 1 ? this.grid[i + framesPerRow] : 0x0;
+            const northFrame: u64 = row < 1 ? 0x0 : this.grid[i - framesPerRow];
+            const southFrame: u64 = rows > row + 1 ? this.grid[i + framesPerRow] : 0x0;
 
             // Get neighbors
-            let west: u64 = frame << 0x1;
-            let east: u64 = frame >> 0x1;
-            let north: u64 = northFrame;
-            let south: u64 = southFrame;
-            let northWest: u64 = (northFrame << 0x1);
-            let northEast: u64 = (northFrame >> 0x1);
-            let southWest: u64 = (southFrame << 0x1);
-            let southEast: u64 = (southFrame >> 0x1);
+            const west: u64 = frame << 0x1;
+            const east: u64 = frame >> 0x1;
+            const north: u64 = northFrame;
+            const south: u64 = southFrame;
+            const northWest: u64 = (northFrame << 0x1);
+            const northEast: u64 = (northFrame >> 0x1);
+            const southWest: u64 = (southFrame << 0x1);
+            const southEast: u64 = (southFrame >> 0x1);
 
             // Find the neighbor sum
-            Game.addLayerToBits(north, b0, b1, b2);
-            Game.addLayerToBits(northEast, b0, b1, b2);
-            Game.addLayerToBits(east, b0, b1, b2);
-            Game.addLayerToBits(southEast, b0, b1, b2);
-            Game.addLayerToBits(south, b0, b1, b2);
-            Game.addLayerToBits(southWest, b0, b1, b2);
-            Game.addLayerToBits(west, b0, b1, b2);
-            Game.addLayerToBits(northWest, b0, b1, b2);
+            adder.reset();
+            adder.addLayerToBits(north);
+            adder.addLayerToBits(northEast);
+            adder.addLayerToBits(east);
+            adder.addLayerToBits(southEast);
+            adder.addLayerToBits(south);
+            adder.addLayerToBits(southWest);
+            adder.addLayerToBits(west);
+            adder.addLayerToBits(northWest);
 
             // Wherever there are two or three cells (b1 & ~b2, representing 2 or 3, since b0 is omitted) 
             //    touching an existing cell (frame), keep alive
             // Wherever there are exactly three cells (b0 & b1 & ~b2, representing 3) touching, spawn a new one.
-            this.nextGrid[i] = (frame & (b1 & ~b2)) | (b1 & b0 & ~b2);
-            if (frame !== 0) {
-                console.log(`next grid ${i}: ${frame.toString(2).padStart(64, '0')}`);
-            }
+            this.nextGrid[i] = (frame & (adder.bit1 & ~adder.bit2)) | (adder.bit1 & adder.bit0 & ~adder.bit2);
         }
-        console.log('next grid');
-        let temp = this.grid;
+        const temp = this.grid;
         this.grid = this.nextGrid;
         this.nextGrid = temp;
     }
 
-    private static addLayerToBits(layer: u64, addBit0: u64, addBit1: u64, addBit2: u64): void {
-        // Carry when 2 bits are 1
-        let carry0 = addBit0 & layer;
-
-        // XOR add the layer, so zeros and 1s make 0, but one of each makes 1.
-        addBit0 ^= layer;
-        // By now, if this layer is 1, either addBit0 or carry0 will be 1 (for a total of 1 or 2).
-        // If this layer is 0, addBit0 will be unchanged.
-
-        // Add the second (2 valued) bit to the carry. 
-        // If both are set, we need to carry the one to the third (4 valued) bit slot
-        let carry1 = addBit1 & carry0;
-
-        // XOR add the carry0 to the second position bit. 
-        addBit1 ^= carry0;
-
-        // Finally, the third position bit is 1 if either addBit2 or carry1 are 1.
-        addBit2 |= carry1;
-    }
 
     /**
      * Visualizes the current state of the grid into the RGBA buffer.
@@ -161,5 +136,53 @@ export class Game {
             const alive = (this.grid[wordIndex] & ((<u64>1) << bit)) != 0;
             this.rgbaBuffer[i] = alive ? this.color : 0x00000000;
         }
+    }
+}
+
+class BitAdder {
+    private _bit0: u64;
+    private _bit1: u64;
+    private _bit2: u64;
+
+    get bit0(): u64 {
+        return this._bit0;
+    }
+    get bit1(): u64 {
+        return this._bit1;
+    }
+    get bit2(): u64 {
+        return this._bit2;
+    }
+
+    constructor() {
+        this._bit0 = 0;
+        this._bit1 = 0;
+        this._bit2 = 0;
+    }
+
+    public addLayerToBits(layer: u64): void {
+        // Carry when 2 bits are 1
+        const carry0 = this._bit0 & layer;
+
+        // XOR add the layer, so zeros and 1s make 0, but one of each makes 1.
+        this._bit0 ^= layer;
+        // By now, if this layer is 1, either addBit0 or carry0 will be 1 (for a total of 1 or 2).
+        // If this layer is 0, addBit0 will be unchanged.
+
+        // Add the second (2 valued) bit to the carry. 
+        // If both are set, we need to carry the one to the third (4 valued) bit slot
+        const carry1 = this._bit1 & carry0;
+
+        // XOR add the carry0 to the second position bit. 
+        this._bit1 ^= carry0;
+
+        // Finally, the third position bit is 1 if either addBit2 or carry1 are 1.
+        this._bit2 |= carry1;
+    }
+
+    public reset(): void {
+        this._bit0 = 0;
+        this._bit1 = 0;
+        this._bit2 = 0;
     }
 }

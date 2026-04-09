@@ -78,7 +78,7 @@ export class GameOfLifeSimulation extends HTMLElement {
         runAtFrameRate(() => {
             game.nextFrame();
             ctx?.putImageData(imageData, 0, 0);
-        }, 1);
+        }, 60);
     }
 }
 
