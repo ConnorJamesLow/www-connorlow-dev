@@ -71,3 +71,41 @@ function calculate(grid: u64, n: u64, ne: u64, e: u64, se: u64, s: u64, sw: u64,
 
 export let generation1 = calculate(generation0, north, northEast, right, southEast, south, southWest, left, northWest);
 ```
+
+#### Logic Example
+
+```
+        N
+   ____ ____ ____
+ 0|0000|1000|0011|
+  |0001|0000|0011|
+ 2|1001|1100|0000|
+W |0000|0000|0000| E
+ 4|0000|0000|0000|
+  |0000|0000|0000|
+ 6|0000|0000|0000|
+   ---- ---- ----
+   0 2  4 6  8 a
+        S
+```
+
+```ts
+let grid: Uint4Array = [
+    0b0000, 0b1000, 0b0011, 
+    0b0001, 0b0000, 0b0011, 
+    0b1001, 0b1100, 0b0000,
+    /* ...etc... */
+];
+
+let framesPerRow = 3;
+let i = 7;
+let northWestFrame = grid[i - framesPerRow - 1]; // 0b0001
+let northFrame = grid[i - framesPerRow]; // 0b0000
+let northEastFrame = grid[i - framesPerRow + 1]; // 0b0011
+let westFrame = grid[i - 1]; // 0b1001
+let frame = grid[i]; // 0b1100
+let eastFrame = grid[i + 1]; // 0b0000;
+let southWestFrame = grid[i + framesPerRow - 1]; // 0b0000;
+let southFrame = grid[i + framesPerRow]; // 0b0000;
+let southEastFrame = grid[i + framesPerRow + 1]; // 0b0000;
+```

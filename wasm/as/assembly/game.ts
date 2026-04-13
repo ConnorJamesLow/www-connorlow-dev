@@ -1,3 +1,8 @@
+import { Debug } from "./debug";
+
+const MASK_RIGHTMOST: u64 = 0x0000_0000_0000_0001;
+const MASK_LEFTMOST: u64 = 0x0000_0000_0000_0001 << 63;
+
 export class Game {
     /**
      * The width of our world in pixels.
@@ -85,23 +90,79 @@ export class Game {
         const framesPerRow: i32 = this.gridWidth / 64;
         const rows = this.grid.length / framesPerRow;
         const adder = new BitAdder();
+
+        // Hold the surrounding frames. Notes:
+        // - Initial West and North frames won't exist, since this is the top of our grid.
+        // - Initial East frames can only exist if there is more than one framesPerRow.
+        // - Initial South frames can only exist if rows > 1.
+        let frame: u64 = 0;
+        let northFrame: u64 = 0;
+        let northEastFrame: u64 = 0;
+        let eastFrame: u64 = 0;
+        let southEastFrame: u64 = 0;
+        let southFrame: u64 = 0;
+        let southWestFrame: u64 = 0;
+        let westFrame: u64 = 0;
+        let northWestFrame: u64 = 0;
+
         for (let i: i32 = 0; i < this.grid.length; i++) {
-            const frame = this.grid[i];
             const row = i / framesPerRow;
 
-            // Get north and south
-            const northFrame: u64 = row < 1 ? 0x0 : this.grid[i - framesPerRow];
-            const southFrame: u64 = rows > row + 1 ? this.grid[i + framesPerRow] : 0x0;
+            // Get frames, north to south, west to east.
+            // We can reuse some of the frames from the previous iteration, 
+            // (NW <- N <- NE, W <- current frame <- E, SW <- S <- SE)
+            // but we need to be careful when we hit the end of a row.
+            const isFinalRow = rows <= row + 1;
+            const isEndOfRow = i % framesPerRow == framesPerRow - 1;
+
+            // Whenever we start a new row,
+            if (i % framesPerRow == 0) {
+                // West
+                northWestFrame = 0;
+                westFrame = 0;
+                southWestFrame = 0;
+
+                // Central
+                northFrame = row < 1 ? 0x0 : this.grid[i - framesPerRow];
+                frame = this.grid[i];
+                southFrame = !isFinalRow ? this.grid[i + framesPerRow] : 0x0;
+            } else {
+                // West
+                northWestFrame = northFrame;
+                westFrame = frame;
+                southWestFrame = southFrame;
+
+                // Central
+                northFrame = northEastFrame;
+                frame = this.grid[i];
+                southFrame = southEastFrame;
+            }
+
+            // East (is last because we actually have to find it)
+            northEastFrame = row < 1 || isEndOfRow ? 0x0 : this.grid[i - framesPerRow + 1];
+            eastFrame = isEndOfRow ? 0x0 : this.grid[i + 1];
+            southEastFrame = isEndOfRow || isFinalRow ? 0x0 : this.grid[i + framesPerRow + 1];
+
+            // We now need to handle wrapping bits for east/right and west/left transforms.
+            // We need to find the previous and next frames in the same row and north/south rows.
+            // For west, we need the rightmost bit of the previous frame
+            // For east, we need the leftmost bit of the next frame
+            const overflowFromEast: u64 = (MASK_LEFTMOST & eastFrame) >> 63;
+            const overflowFromWest: u64 = (MASK_RIGHTMOST & westFrame) << 63;
+            const overflowFromNorthEast: u64 = (MASK_LEFTMOST & northEastFrame) >> 63;
+            const overflowFromNorthWest: u64 = (MASK_RIGHTMOST & northWestFrame) << 63;
+            const overflowFromSouthEast: u64 = (MASK_LEFTMOST & southEastFrame) >> 63;
+            const overflowFromSouthWest: u64 = (MASK_RIGHTMOST & southWestFrame) << 63;
 
             // Get neighbors
-            const west: u64 = frame << 0x1;
-            const east: u64 = frame >> 0x1;
+            const west: u64 = (frame >> 0x1) + overflowFromWest;
+            const east: u64 = (frame << 0x1) + overflowFromEast;
             const north: u64 = northFrame;
             const south: u64 = southFrame;
-            const northWest: u64 = (northFrame << 0x1);
-            const northEast: u64 = (northFrame >> 0x1);
-            const southWest: u64 = (southFrame << 0x1);
-            const southEast: u64 = (southFrame >> 0x1);
+            const northWest: u64 = (northFrame >> 0x1) + overflowFromNorthWest;
+            const northEast: u64 = (northFrame << 0x1) + overflowFromNorthEast;
+            const southWest: u64 = (southFrame >> 0x1) + overflowFromSouthWest;
+            const southEast: u64 = (southFrame << 0x1) + overflowFromSouthEast;
 
             // Find the neighbor sum
             adder.reset();
@@ -132,9 +193,16 @@ export class Game {
         const cells = this.gridWidth * this.gridHeight;
         for (let i: u32 = 0; i < cells; i++) {
             const wordIndex = i / 64;
-            const bit = i % 64;
+
+            // I need to reverse the bit order for the visualization.
+            const bit = 63 - (i % 64);
             const alive = (this.grid[wordIndex] & ((<u64>1) << bit)) != 0;
-            this.rgbaBuffer[i] = alive ? this.color : 0x00000000;
+            if (wordIndex === 10 && Debug.isDebug) {
+                this.rgbaBuffer[0] = 0xFFFF6600;
+            }
+            this.rgbaBuffer[i] = alive 
+                ? this.color 
+                : Debug.isDebug && (bit === 63 || i / this.gridWidth % 64 === 0) ? 0x88FF88FF : 0x00000000;
         }
     }
 }

@@ -6,6 +6,8 @@ import { runAtFrameRate } from "../../utils/animation.js";
 export class GameOfLifeSimulation extends HTMLElement {
     private canvas?: HTMLCanvasElement;
     private game: GameWrapper;
+    private framesPerSecond: number = 60;
+
     get height() {
         return parseInt(this.getAttribute("height") || "5120");
     }
@@ -19,6 +21,14 @@ export class GameOfLifeSimulation extends HTMLElement {
     get cells() {
         const { width, height, scale } = this;
         return (width / scale) * (height / scale);
+    }
+
+    set frameRate(rate: number) {
+        this.framesPerSecond = rate;
+    }
+
+    get frameRate() {
+        return this.framesPerSecond;
     }
 
     constructor() {
@@ -78,7 +88,7 @@ export class GameOfLifeSimulation extends HTMLElement {
         runAtFrameRate(() => {
             game.nextFrame();
             ctx?.putImageData(imageData, 0, 0);
-        }, 60);
+        }, this.framesPerSecond);
     }
 }
 
