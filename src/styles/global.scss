@@ -1,3 +1,5 @@
+@use "tokens/generated" as tokens;
+
 * {
   margin: unset;
   padding: unset;
@@ -13,6 +15,12 @@ title {
   display: none;
 }
 
+:root {
+  @include tokens.container-max-vars();
+  @include tokens.padding-vars();
+  @include tokens.typography-vars();
+}
+
 body {
   font-family: "Roboto Flex", "Montserrat", system-ui, -apple-system, sans-serif;
   margin: 0;
@@ -22,9 +30,9 @@ body {
 }
 
 main {
-  max-width: 800px;
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--page-padding);
 }
 
 a {

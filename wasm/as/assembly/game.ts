@@ -155,6 +155,13 @@ export class Game {
             eastFrame = isEndOfRow ? 0x0 : this.grid[i + 1];
             southEastFrame = isEndOfRow || isFinalRow ? 0x0 : this.grid[i + framesPerRow + 1];
 
+            if (frame === 0x0 && northFrame === 0x0 && eastFrame === 0x0 
+                && southFrame === 0x0 && westFrame === 0x0 && northEastFrame === 0x0 
+                && southEastFrame === 0x0 && southWestFrame === 0x0 && northWestFrame === 0x0) {
+                    this.nextGrid[i] = 0x0;
+                continue;
+            }
+
             // We now need to handle wrapping bits for east/right and west/left transforms.
             // We need to find the previous and next frames in the same row and north/south rows.
             // For west, we need the rightmost bit of the previous frame

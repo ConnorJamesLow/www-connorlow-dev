@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run generate:style-tokens && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "generate:style-tokens": "node --experimental-strip-types ./scripts/generate-style-tokens.ts",
     "wasm:as:build": "npm run asbuild:debug --prefix wasm/as && npm run asbuild:release --prefix wasm/as",
     "wasm:as:dev": "npm run start --prefix wasm/as"
   },

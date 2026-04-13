@@ -68,6 +68,7 @@ export class GameOfLifeSimulation extends HTMLElement {
         );
         const imageData = new ImageData(videoView, canvas.width, canvas.height);
 
+        // And random starting patterns
         const categories = [
             'methuselahs', 'spaceships', 'oscillators', 'stills'
         ] satisfies Parameters<typeof patterns.getRandomPattern>[2];
@@ -85,6 +86,16 @@ export class GameOfLifeSimulation extends HTMLElement {
         ]) {
             game.addCell(x, y);
         }
+
+        // Periodically add random patterns
+        setInterval(() => {
+            const pattern = patterns.getRandomPattern(
+                [window.innerWidth / scale, this.width],
+                [window.innerHeight / scale, this.height],
+                ['spaceships']
+            );
+            game.addCells(pattern.map(([x, y]) => [x, y]));
+        }, 2000);
 
         // On click, add a random pattern
         document.addEventListener('click', ({ clientX, clientY }: MouseEvent) => {

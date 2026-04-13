@@ -40,7 +40,6 @@ export function getLocalizedPattern<T extends keyof typeof patterns>(
     const coordinates: [number, number][] = [];
 
     // Map the 2D pattern to a 1D array of coordinates offset by the given parameters.
-    console.log('request pattern (', category, ':', name, ') at', offsetX, offsetY);
     for (let y = 0; y < pattern.length; y++) {
         for (let x = 0; x < pattern[y].length; x++) {
             const rx = rotateX ? pattern[y].length - 1 - x : x;
