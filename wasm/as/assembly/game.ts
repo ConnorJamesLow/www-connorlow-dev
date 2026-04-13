@@ -37,21 +37,33 @@ export class Game {
 
     public get imageBufferPointer(): usize {
         const rgbaBuffer = this.rgbaBuffer;
-        return changetype<usize>(rgbaBuffer);
+        return rgbaBuffer.dataStart;
     }
 
+    /**
+     * The width of the grid in cells.
+     */
     public get gridWidth(): u32 {
         return this.width / this.scale;
     }
 
+    /**
+     * The height of the grid in cells.
+     */
     public get gridHeight(): u32 {
         return this.height / this.scale;
     }
 
+    /**
+     * The scale of the grid, i.e. the square root of how many pixels per cell.
+     */
     public get gridScale(): u8 {
         return this.scale;
     }
 
+    /**
+     * The color of the live cells.
+     */
     public get color(): u32 {
         return this._color;
     }
@@ -60,9 +72,9 @@ export class Game {
         this._color = color;
     }
 
-    public constructor(width: u32 = 5120, height: u32 = 5120, scale: u8 = 2, color: u32 = 0xFFFFFFFF) {
-        this.width = width;
-        this.height = height;
+    public constructor(requestedWidth: u32 = 5120, requestedHeight: u32 = 5120, scale: u8 = 2, color: u32 = 0xFFFFFFFF) {
+        this.width = requestedWidth + requestedWidth % 64;
+        this.height = requestedHeight + requestedHeight % 64;
         this.scale = scale;
 
         // Calculate the total number of cells based on the width, height, and scale. 
@@ -82,7 +94,7 @@ export class Game {
 
     public addCell(x: u32, y: u32): void {
         const index = (y * this.gridWidth + x) / 64;
-        const bit = (y * this.gridWidth + x) % 64;
+        const bit = 63 - ((y * this.gridWidth + x) % 64);
         this.grid[index] |= (1 << bit);
     }
 
@@ -197,12 +209,23 @@ export class Game {
             // I need to reverse the bit order for the visualization.
             const bit = 63 - (i % 64);
             const alive = (this.grid[wordIndex] & ((<u64>1) << bit)) != 0;
-            if (wordIndex === 10 && Debug.isDebug) {
-                this.rgbaBuffer[0] = 0xFFFF6600;
-            }
             this.rgbaBuffer[i] = alive 
                 ? this.color 
-                : Debug.isDebug && (bit === 63 || i / this.gridWidth % 64 === 0) ? 0x88FF88FF : 0x00000000;
+                : Debug.isDebug && (bit === 0 || i / this.gridWidth % 64 === 0) ? 0x88FF88FF : 0x00000000;
+
+            if (!alive && Debug.isDebug) {
+                // if (bit === 0 && wordIndex % (this.gridWidth / 64) === (this.gridWidth / 64) - 1) {
+                //     this.rgbaBuffer[i] = 0xFF00FFFF;
+                // }
+
+                // if (wordIndex < 1) {
+                //     this.rgbaBuffer[i] = 0xFFFFFF88;
+                // }
+            }
+        }
+
+        if (Debug.isDebug) {
+            this.rgbaBuffer[0] = 0xFFFF00FF;
         }
     }
 }

@@ -26,6 +26,12 @@ export default class GameWrapper {
         game.addCell(this.gameId, x, y);
     }
 
+    public addCells(cells: [number, number][]): void {
+        for (const [x, y] of cells) {
+            game.addCell(this.gameId, x, y);
+        }
+    }
+
     public getImageBufferPointer(): number {
         return game.getImageBufferPointer(this.gameId);
     }

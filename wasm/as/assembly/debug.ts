@@ -1,3 +1,3 @@
 export class Debug {
-    public static isDebug: boolean = true;
+    public static isDebug: boolean = false;
 }

@@ -4,7 +4,6 @@ cmp-cgol-sim {
 
     canvas {
         image-rendering: pixelated;
-        margin-inline: auto;
         scale: var(--scale, 1);
         transform-origin: top left;
     }

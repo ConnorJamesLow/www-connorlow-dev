@@ -49,16 +49,11 @@ export class GameOfLifeSimulation extends HTMLElement {
             height={gridH} /> as HTMLCanvasElement;
         this.canvas = canvas;
         this.appendChild(canvas);
-
-        // Draw some test shapes
-        console.log('total cells:', this.cells);
-        console.log('u64 array size:', this.cells / 64);
-        console.log('potential memory usage (MB):', (this.cells / 64) * 8 / (1024 ** 2));
         this.runSimulation();
     }
 
     private runSimulation() {
-        const { game, canvas } = this;
+        const { game, canvas, scale } = this;
         if (!canvas) {
             return;
         }
@@ -73,16 +68,33 @@ export class GameOfLifeSimulation extends HTMLElement {
         );
         const imageData = new ImageData(videoView, canvas.width, canvas.height);
 
-        // Add some initial live cells for testing
+        const categories = [
+            'methuselahs', 'spaceships', 'oscillators', 'stills'
+        ] satisfies Parameters<typeof patterns.getRandomPattern>[2];
+        const boundsX = [0, window.innerWidth / scale] as [number, number];
+        const boundsY = [0, window.innerHeight / scale] as [number, number];
         for (const [x, y] of [
-            ...patterns.getLocalizedPattern('methuselahs', 'acorn', 20, 25),
-            ...patterns.getLocalizedPattern('oscillators', 'beacon', 100, 48),
-            ...patterns.getLocalizedPattern('spaceships', 'glider', 80, 100),
-            ...patterns.getLocalizedPattern('stills', 'block', 175, 25)
+            ...patterns.getRandomPattern(boundsX, boundsY, categories),
+            ...patterns.getRandomPattern(boundsX, boundsY, categories),
+            ...patterns.getRandomPattern(boundsX, boundsY, categories),
+            ...patterns.getRandomPattern(boundsX, boundsY, categories),
+            ...patterns.getRandomPattern(boundsX, boundsY, categories),
+            ...patterns.getRandomPattern(boundsX, boundsY, categories),
+            ...patterns.getRandomPattern(boundsX, boundsY, categories),
+            ...patterns.getRandomPattern(boundsX, boundsY, categories),
         ]) {
             game.addCell(x, y);
         }
 
+        // On click, add a random pattern
+        document.addEventListener('click', ({ clientX, clientY }: MouseEvent) => {
+            const pattern = patterns.getRandomPattern(
+                [clientX / scale, clientX / scale],
+                [clientY / scale, clientY / scale],
+                ['crackles', 'methuselahs', 'spaceships']
+            );
+            game.addCells(pattern.map(([x, y]) => [x, y]));
+        });
 
         // Start the animation loop
         runAtFrameRate(() => {
