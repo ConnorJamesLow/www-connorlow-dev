@@ -1,10 +1,11 @@
-@use "tokens/generated" as tokens;
+@use "tokens/main" as *;
 
 * {
+  display: block;
+  box-sizing: border-box;
+  font: inherit;
   margin: unset;
   padding: unset;
-  box-sizing: border-box;
-  display: block;
 }
 
 head,
@@ -16,9 +17,9 @@ title {
 }
 
 :root {
-  @include tokens.container-max-vars();
-  @include tokens.padding-vars();
-  @include tokens.typography-vars();
+  @include token-container-max-vars();
+  @include token-padding-vars();
+  @include token-typography-vars();
 }
 
 body {
@@ -27,19 +28,14 @@ body {
   padding: 0;
   background-color: #000;
   color: #e0e0e0;
+
+  @include token-typography-body01();
 }
 
-main {
+.content-wrapper {
+  container-type: inline-size;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--page-padding);
-}
-
-a {
-  color: #64b5f6;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  padding-inline: var(--page-padding);
+  position: relative;
 }

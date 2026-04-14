@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "generate:style-tokens": "node --experimental-strip-types ./scripts/generate-style-tokens.ts",
+    "generate:style-tokens:watch": "npx nodemon --watch \"src/styles/tokens\" --ext ts,js,mjs,cjs,json --exec \"npm run generate:style-tokens\"",
     "wasm:as:build": "npm run asbuild:debug --prefix wasm/as && npm run asbuild:release --prefix wasm/as",
     "wasm:as:dev": "npm run start --prefix wasm/as"
   },
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.10.0",
+    "@types/node": "^25.6.0",
     "@typescript-eslint/parser": "^8.58.0",
     "assemblyscript": "^0.28.13",
     "eslint": "^10.1.0",

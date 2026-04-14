@@ -1,6 +1,10 @@
 ---
 import "../styles/main.scss";
 
+if (import.meta.env.DEV) {
+    void import("../styles/debug-layout.scss");
+}
+
 interface Props {
     title: string;
 }

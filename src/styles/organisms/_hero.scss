@@ -1,0 +1,25 @@
+@use "../tokens/main" as *;
+
+.hero {
+    padding-block: unit(8) unit(8);
+    padding-inline: unit(3);
+    position: relative;
+
+    @include token-container-query(sm) {
+        padding-block-start: unit(16);
+        padding-inline: unit(8);
+    }
+
+    .hero__title {
+        margin-bottom: unit(4);
+        @include token-typography-hero01(light);
+    }
+
+    .hero__subtitle {
+        @include token-typography-hero02(light);
+
+        @include token-media-min(lg) {
+            padding-inline-start: unit(1);
+        }
+    }
+}

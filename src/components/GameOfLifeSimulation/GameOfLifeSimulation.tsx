@@ -6,7 +6,7 @@ import { runAtFrameRate } from "../../utils/animation.js";
 export class GameOfLifeSimulation extends HTMLElement {
     private canvas?: HTMLCanvasElement;
     private game: GameWrapper;
-    private framesPerSecond: number = 60;
+    private framesPerSecond: number = process.env.NODE_ENV === 'development' ? 3 : 60;
 
     get height() {
         return parseInt(this.getAttribute("height") || "5120");
@@ -86,16 +86,6 @@ export class GameOfLifeSimulation extends HTMLElement {
         ]) {
             game.addCell(x, y);
         }
-
-        // Periodically add random patterns
-        setInterval(() => {
-            const pattern = patterns.getRandomPattern(
-                [window.innerWidth / scale, this.width],
-                [window.innerHeight / scale, this.height],
-                ['spaceships']
-            );
-            game.addCells(pattern.map(([x, y]) => [x, y]));
-        }, 2000);
 
         // On click, add a random pattern
         document.addEventListener('click', ({ clientX, clientY }: MouseEvent) => {
