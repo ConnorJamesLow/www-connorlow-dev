@@ -74,16 +74,10 @@ export class GameOfLifeSimulation extends HTMLElement {
         ] satisfies Parameters<typeof patterns.getRandomPattern>[2];
         const boundsX = [0, window.innerWidth / scale] as [number, number];
         const boundsY = [0, window.innerHeight / scale] as [number, number];
-        for (const [x, y] of [
-            ...patterns.getRandomPattern(boundsX, boundsY, categories),
-            ...patterns.getRandomPattern(boundsX, boundsY, categories),
-            ...patterns.getRandomPattern(boundsX, boundsY, categories),
-            ...patterns.getRandomPattern(boundsX, boundsY, categories),
-            ...patterns.getRandomPattern(boundsX, boundsY, categories),
-            ...patterns.getRandomPattern(boundsX, boundsY, categories),
-            ...patterns.getRandomPattern(boundsX, boundsY, categories),
-            ...patterns.getRandomPattern(boundsX, boundsY, categories),
-        ]) {
+        const spaceFactor = Math.sqrt((window.innerWidth / 100) * (window.innerHeight / 100)) | 0;
+        for (const [x, y] of Array(spaceFactor).fill(0).flatMap(() => 
+            patterns.getRandomPattern(boundsX, boundsY, categories),
+        )) {
             game.addCell(x, y);
         }
 
