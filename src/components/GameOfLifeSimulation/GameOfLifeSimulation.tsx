@@ -5,8 +5,20 @@ import { runAtFrameRate } from "../../utils/animation.js";
 
 export class GameOfLifeSimulation extends HTMLElement {
     private canvas?: HTMLCanvasElement;
+    private offscreenCanvas?: OffscreenCanvas;
     private game: GameWrapper;
+    private hasInitializedSimulation = false;
+    private hasStartedAnimationLoop = false;
+    private startAnimationLoop?: () => void;
     private framesPerSecond: number = process.env.NODE_ENV === 'development' ? 3 : 60;
+    private readonly startAnimationLoopWhenReady = () => {
+        if (this.hasStartedAnimationLoop || !this.isConnected) {
+            return;
+        }
+
+        this.hasStartedAnimationLoop = true;
+        this.startAnimationLoop?.();
+    };
 
     get height() {
         return parseInt(this.getAttribute("height") || "5120");
@@ -42,21 +54,33 @@ export class GameOfLifeSimulation extends HTMLElement {
         const gridH = height / scale;
         this.style.setProperty('--scale', scale.toString());
 
-        // Append texsaur generated DOM nodes (bitmap matches WASM cell grid; CSS scale upsamples)
-        const canvas = <canvas
-            id="conway-canvas"
-            width={gridW}
-            height={gridH} /> as HTMLCanvasElement;
-        this.canvas = canvas;
-        this.appendChild(canvas);
+        if (!this.canvas) {
+            // Append texsaur DOM nodes; CSS scale preserves the low-res bitmap effect.
+            this.canvas = <canvas
+                id="conway-canvas"
+                width={gridW}
+                height={gridH} /> as HTMLCanvasElement;
+            this.offscreenCanvas = this.canvas.transferControlToOffscreen();
+        }
+
+        if (!this.contains(this.canvas)) {
+            this.appendChild(this.canvas);
+        }
+
         this.runSimulation();
+    }
+
+    disconnectedCallback() {
+        window.removeEventListener("load", this.startAnimationLoopWhenReady);
     }
 
     private runSimulation() {
         const { game, canvas, scale } = this;
-        if (!canvas) {
+        if (!canvas || this.hasInitializedSimulation) {
             return;
         }
+
+        this.hasInitializedSimulation = true;
 
         // Set up the video buffer to read from the WASM memory
         const bufferPtr = game.getImageBufferPointer();
@@ -91,13 +115,27 @@ export class GameOfLifeSimulation extends HTMLElement {
             game.addCells(pattern.map(([x, y]) => [x, y]));
         });
 
-        // Start the animation loop
-        runAtFrameRate(() => {
+        ctx?.putImageData(imageData, 0, 0);
+
+        this.startAnimationLoop = () => runAtFrameRate(() => {
             game.nextFrame();
             ctx?.putImageData(imageData, 0, 0);
         }, this.framesPerSecond);
+
+        if (document.readyState === "loading") {
+            window.addEventListener(
+                "load",
+                this.startAnimationLoopWhenReady,
+                { once: true },
+            );
+            return;
+        }
+
+        this.startAnimationLoopWhenReady();
     }
 }
 
 // Define the custom element
-customElements.define("cmp-cgol-sim", GameOfLifeSimulation);
+window.requestIdleCallback(() => {
+    customElements.define("cmp-cgol-sim", GameOfLifeSimulation);
+});

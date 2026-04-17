@@ -58,7 +58,11 @@ export const breakpoints = {
 
 export type Breakpoint = keyof typeof breakpoints;
 
-export type FontFamily = 'Roboto Flex' | 'Montserrat';
+export const fontFamilies = {
+    robotoFlex: '"Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif'
+} as const;
+
+export type FontFamily = (typeof fontFamilies)[keyof typeof fontFamilies];
 export type TypographyWeight = 'normal' | 'bold' | 'light';
 export type TypographyStyle = Partial<{
     fontSize: number;
@@ -77,61 +81,61 @@ export type RobotoFlexVariationProperty =
 
 export const typography = {
     hero01: {
-        fontFamily: 'Roboto Flex',
-        weights: { light: 220 },
+        fontFamily: fontFamilies.robotoFlex,
+        weights: { light: 120 },
         styles: {
             xs: {
                 fontSize: 56,
                 lineHeight: 56,
                 textTransform: 'uppercase',
                 letterSpacing: 1.2,
-                fontVariationSettings: '"opsz" 96, "wdth" 128',
+                fontVariationSettings: '"opsz" 96, "wdth" 128, "GRAD" -180',
             },
             sm: {
                 fontSize: 64,
                 lineHeight: 64,
                 textTransform: 'uppercase',
                 letterSpacing: 0.8,
-                fontVariationSettings: '"opsz" 128, "wdth" 128',
+                fontVariationSettings: '"opsz" 128, "wdth" 128, "GRAD" -200',
             },
             lg: {
                 fontSize: 128,
                 lineHeight: 128,
                 textTransform: 'uppercase',
                 letterSpacing: 0.8,
-                fontVariationSettings: '"opsz" 144, "wdth" 144',
+                fontVariationSettings: '"opsz" 128, "wdth" 128, "GRAD" -200',
             },
             xl: {
                 fontSize: 160,
                 lineHeight: 160,
                 textTransform: 'uppercase',
                 letterSpacing: 0.6,
-                fontVariationSettings: '"opsz" 160, "wdth" 160',
+                fontVariationSettings: '"opsz" 160, "wdth" 128, "GRAD" -200',
             },
         },
     },
     hero02: {
-        fontFamily: 'Roboto Flex',
+        fontFamily: fontFamilies.robotoFlex,
         weights: { light: 190 },
         styles: {
             xs: {
-                fontSize: 30,
+                fontSize: 28,
                 lineHeight: 32,
                 textTransform: 'lowercase',
                 letterSpacing: 0.8,
                 fontVariationSettings: '"opsz" 48, "wdth" 110',
             },
             md: {
-                fontSize: 50,
+                fontSize: 48,
                 lineHeight: 56,
                 textTransform: 'lowercase',
                 letterSpacing: 1.2,
-                fontVariationSettings: '"opsz" 112, "wdth" 112',
+                fontVariationSettings: '"opsz" 48, "wdth" 128',
             }
         },
     },
     headline01: {
-        fontFamily: 'Montserrat',
+        fontFamily: fontFamilies.robotoFlex,
         weights: { normal: 460 },
         styles: {
             xs: {
@@ -155,7 +159,7 @@ export const typography = {
         },
     },
     body01: {
-        fontFamily: 'Roboto Flex',
+        fontFamily: fontFamilies.robotoFlex,
         weights: { normal: 480, bold: 620 },
         styles: {
             xs: {

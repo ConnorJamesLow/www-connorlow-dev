@@ -140,53 +140,53 @@ $breakpoints: (
 }
 
 @mixin typography-vars() {
-  --typography-hero01-font-family: "Roboto Flex";
-  --typography-hero01-weight-light: 220;
+  --typography-hero01-font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-hero01-weight-light: 120;
   --typography-hero01-font: normal var(--typography-hero01-weight-light) var(--typography-hero01-font-size) / var(--typography-hero01-line-height, normal) var(--typography-hero01-font-family);
   --typography-hero01-font-size: 56px;
   --typography-hero01-line-height: 56px;
   --typography-hero01-letter-spacing: 1.2px;
   --typography-hero01-text-transform: uppercase;
-  --typography-hero01-font-variation-settings: "opsz" 96, "wdth" 128;
+  --typography-hero01-font-variation-settings: "opsz" 96, "wdth" 128, "GRAD" -180;
   @include media-min(sm) {
     --typography-hero01-font-size: 64px;
     --typography-hero01-line-height: 64px;
     --typography-hero01-letter-spacing: 0.8px;
     --typography-hero01-text-transform: uppercase;
-    --typography-hero01-font-variation-settings: "opsz" 128, "wdth" 128;
+    --typography-hero01-font-variation-settings: "opsz" 128, "wdth" 128, "GRAD" -200;
   }
   @include media-min(lg) {
     --typography-hero01-font-size: 128px;
     --typography-hero01-line-height: 128px;
     --typography-hero01-letter-spacing: 0.8px;
     --typography-hero01-text-transform: uppercase;
-    --typography-hero01-font-variation-settings: "opsz" 144, "wdth" 144;
+    --typography-hero01-font-variation-settings: "opsz" 128, "wdth" 128, "GRAD" -200;
   }
   @include media-min(xl) {
     --typography-hero01-font-size: 160px;
     --typography-hero01-line-height: 160px;
     --typography-hero01-letter-spacing: 0.6px;
     --typography-hero01-text-transform: uppercase;
-    --typography-hero01-font-variation-settings: "opsz" 160, "wdth" 160;
+    --typography-hero01-font-variation-settings: "opsz" 160, "wdth" 128, "GRAD" -200;
   }
 
-  --typography-hero02-font-family: "Roboto Flex";
+  --typography-hero02-font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
   --typography-hero02-weight-light: 190;
   --typography-hero02-font: normal var(--typography-hero02-weight-light) var(--typography-hero02-font-size) / var(--typography-hero02-line-height, normal) var(--typography-hero02-font-family);
-  --typography-hero02-font-size: 30px;
+  --typography-hero02-font-size: 28px;
   --typography-hero02-line-height: 32px;
   --typography-hero02-letter-spacing: 0.8px;
   --typography-hero02-text-transform: lowercase;
   --typography-hero02-font-variation-settings: "opsz" 48, "wdth" 110;
   @include media-min(md) {
-    --typography-hero02-font-size: 50px;
+    --typography-hero02-font-size: 48px;
     --typography-hero02-line-height: 56px;
     --typography-hero02-letter-spacing: 1.2px;
     --typography-hero02-text-transform: lowercase;
-    --typography-hero02-font-variation-settings: "opsz" 112, "wdth" 112;
+    --typography-hero02-font-variation-settings: "opsz" 48, "wdth" 128;
   }
 
-  --typography-headline01-font-family: "Montserrat";
+  --typography-headline01-font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
   --typography-headline01-weight-normal: 460;
   --typography-headline01-font: normal var(--typography-headline01-weight-normal) var(--typography-headline01-font-size) / var(--typography-headline01-line-height, normal) var(--typography-headline01-font-family);
   --typography-headline01-font-size: 30px;
@@ -206,7 +206,7 @@ $breakpoints: (
     --typography-headline01-text-transform: uppercase;
   }
 
-  --typography-body01-font-family: "Roboto Flex";
+  --typography-body01-font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
   --typography-body01-weight-normal: 480;
   --typography-body01-weight-bold: 620;
   --typography-body01-font: normal var(--typography-body01-weight-normal) var(--typography-body01-font-size) / var(--typography-body01-line-height, normal) var(--typography-body01-font-family);
@@ -223,7 +223,7 @@ $breakpoints: (
 }
 
 $typography-hero01-weights: (
-  light: 220,
+  light: 120,
 );
 
 @function typography-hero01-weight($weight: light) {
