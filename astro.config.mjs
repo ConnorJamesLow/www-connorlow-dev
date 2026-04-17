@@ -8,6 +8,9 @@ export default defineConfig({
     site: 'https://www.connorlow.dev', // Replace with your actual GitHub Pages URL
     base: '/',
     vite: {
+        worker: {
+            format: 'es',
+        },
         plugins: [
             wasm(),
             topLevelAwait()
