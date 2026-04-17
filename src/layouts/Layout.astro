@@ -1,5 +1,6 @@
 ---
 import "../styles/main.scss";
+import robotoFlexFontUrl from "../../Roboto_Flex/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf?url";
 
 if (import.meta.env.DEV) {
     void import("../styles/debug-layout.scss");
@@ -18,14 +19,14 @@ const { title } = Astro.props;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preload" href={robotoFlexFontUrl} as="font" type="font/ttf" crossorigin />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Roboto+Flex:opsz,wdth,wght,GRAD,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,25..151,100..1000,-200..150,27..175,323..603,25..135,-203,738,514,712&display=swap"
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link 
+            href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,GRAD,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..151,180..720,-200..50,96,468,79,-203,738,514,712&display=swap" 
             rel="stylesheet"
-        />
-        <meta name="generator" content={Astro.generator} />
+        > -->
         <title>{title}</title>
     </head>
     <body>
@@ -37,7 +38,7 @@ const { title } = Astro.props;
         </div>
 
         <script>
-            import "../components/GameOfLifeSimulation/GameOfLifeSimulation";
+            void import("../components/GameOfLifeSimulation/GameOfLifeSimulation");
         </script>
     </body>
 </html>

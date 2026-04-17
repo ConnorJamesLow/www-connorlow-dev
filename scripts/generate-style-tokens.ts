@@ -41,10 +41,6 @@ function toPx(value: number): string {
     return `${value}px`;
 }
 
-function quote(value: string): string {
-    return JSON.stringify(value);
-}
-
 function formatScssValue(value: number | string, property?: string): string {
     if (typeof value === 'number') {
         if (property === 'font-weight' || property === 'columns') {
@@ -296,7 +292,7 @@ function renderTypographyVariableDeclarations(name: TypographyName, token: Typog
         : `normal var(--typography-${tokenName}-weight-${defaultWeight}) var(--typography-${tokenName}-font-size) var(--typography-${tokenName}-font-family)`;
 
     const lines = [
-        `${indentUnit}--typography-${tokenName}-font-family: ${quote(token.fontFamily)};`
+        `${indentUnit}--typography-${tokenName}-font-family: ${token.fontFamily};`
     ];
 
     for (const [weightName, value] of Object.entries(token.weights)) {
