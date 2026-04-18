@@ -50,8 +50,8 @@ export class GameOfLifeSimulation extends HTMLElement {
         const cx = clientX / scale;
         const cy = clientY / scale;
         const pattern = patterns.getRandomPattern(
-            [cx - 20, cx + 20],
-            [cy - 20, cy + 20],
+            [cx + 48, cx + 80],
+            [cy + 48, cy + 80],
             ["crackles", "methuselahs", "spaceships"],
         );
         const message: AddCellsMessage = {
