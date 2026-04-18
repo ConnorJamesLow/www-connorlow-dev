@@ -21,13 +21,3 @@
 .hero__subtitle {
     @include token-typography-hs(light);
 }
-
-@keyframes gradient-animation {
-    from {
-        background-position: 0% center;
-    }
-
-    to {
-        background-position: 100% center;
-    }
-}
