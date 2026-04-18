@@ -33,9 +33,6 @@ body {
 }
 
 .content-wrapper {
-  container-type: inline-size;
-  max-width: var(--container-max);
   margin: 0 auto;
-  padding-inline: var(--page-padding);
   position: relative;
 }

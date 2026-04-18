@@ -2,24 +2,74 @@
 
 .hero {
     padding-block: unit(8) unit(8);
-    padding-inline: unit(3);
-    position: relative;
+
+    &:after {
+        --gradient-1: linear-gradient(70deg, hsla(50, 100%, 50%, 0.5), transparent, hsla(240, 100%, 50%, 0.5), transparent, hsla(50, 100%, 50%, 0.5), transparent, hsla(240, 100%, 50%, 0.5));
+        --gradient-2: linear-gradient(190deg, hsla(190, 100%, 50%, 0.5), transparent, hsla(300, 100%, 50%, 0.5), transparent, hsla(190, 100%, 50%, 0.5), transparent, hsla(300, 100%, 50%, 0.5));
+        --gradient-3: radial-gradient(circle, #ffff0008, #00ffff08, #ff00ff08, #0000ff08, transparent);
+        animation: gradient-animation 30s ease infinite;
+        animation-direction: alternate;
+        background: var(--gradient-1, linear-gradient(transparent, transparent)),
+            var(--gradient-2, linear-gradient(transparent, transparent)),
+            var(--gradient-3, linear-gradient(transparent, transparent));
+        background-size: 400% auto;
+        display: block;
+        content: "";
+        position: absolute;
+        inset: 0;
+        mask-image: linear-gradient(to bottom, #000f 1%, #000a 4%, #0004 10%, #0002 85%, transparent 100%);
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+            background: none;
+        }
+    }
 
     @include token-container-query(sm) {
         padding-block-start: unit(16);
         padding-inline: unit(8);
     }
 
-    .hero__title {
-        margin-bottom: unit(4);
-        @include token-typography-ht(light);
+    >.container {
+        --gradient-1: linear-gradient(70deg, #ff8c, #dbf8, #8ff8, #f8fc, #ff8c);
+        --gradient-2: linear-gradient(200deg, #fff8, #ffff);
+        animation: gradient-animation 4s ease-in-out infinite;
+        animation-direction: alternate;
+        background: var(--gradient-1, linear-gradient(transparent, transparent)),
+            var(--gradient-2, linear-gradient(transparent, transparent)),
+            var(--gradient-3, linear-gradient(transparent, transparent));
+        background-size: 300% auto;
+        background-clip: text;
+        color: transparent;
+        padding-inline: unit(3);
+        position: relative;
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+            color: var(--color-text-primary, #fff);
+        }
+    }
+}
+
+.hero__title {
+    // margin-bottom: unit(4);
+    @include token-typography-ht(light);
+}
+
+.hero__subtitle {
+    @include token-typography-hs(light);
+
+    @include token-media-min(lg) {
+        padding-inline-start: unit(1);
+    }
+}
+
+@keyframes gradient-animation {
+    from {
+        background-position: 0% center;
     }
 
-    .hero__subtitle {
-        @include token-typography-hs(light);
-
-        @include token-media-min(lg) {
-            padding-inline-start: unit(1);
-        }
+    to {
+        background-position: 100% center;
     }
 }

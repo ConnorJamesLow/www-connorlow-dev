@@ -1,9 +1,8 @@
 .page__background-canvas-container {
     filter: brightness(0.18);
+    pointer-events: none;
     position: fixed;
     top: -128px;
     left: -128px;
-    width: 100%;
-    height: 100%;
     z-index: -1;
 }

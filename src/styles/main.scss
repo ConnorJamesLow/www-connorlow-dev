@@ -1,5 +1,5 @@
 @use "fonts";
 @use "global";
 @use "page";
-@use "atoms/text";
-@use "organisms/main";
+@use "atoms/main" as atoms;
+@use "organisms/main" as organisms;
