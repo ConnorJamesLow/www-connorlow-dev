@@ -1,6 +1,6 @@
 @use "tokens/generated" as tokens;
 
-html.debug-layout main {
+html.debug-layout .container {
   --debug-cols: #{tokens.breakpoint-value(xs, columns)};
   --debug-grid-line: rgba(255, 255, 255, 0.06);
   --debug-grid-major: rgba(255, 255, 255, 0.12);
@@ -25,8 +25,8 @@ html.debug-layout main {
     --debug-cols: #{tokens.breakpoint-value(xxl, columns)};
   }
 
-  $col-a: rgba(255, 100, 120, 0.07);
-  $col-b: rgba(100, 180, 255, 0.06);
+  $col-a: rgba(255, 100, 120, 0.15);
+  $col-b: rgba(100, 180, 255, 0.12);
 
   background-image: repeating-linear-gradient(
       90deg,

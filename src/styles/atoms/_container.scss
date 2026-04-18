@@ -1,5 +1,33 @@
+@use "../tokens/main" as *;
+
 .container {
+    --layout-columns-sm: var(--layout-columns, 1);
+    --layout-columns-md: var(--layout-columns-sm);
+    --layout-columns-lg: var(--layout-columns-md);
+    --layout-columns-xl: var(--layout-columns-lg);
+
     container-type: inline-size;
     max-width: var(--container-max);
     margin: 0 auto;
+
+    > .container__layout {
+        display: grid;
+        grid-template-columns: repeat(var(--layout-columns, 1), 1fr);
+    
+        @include token-container-query(sm) {
+            --layout-columns: var(--layout-columns-sm);
+        }
+    
+        @include token-container-query(md) {
+            --layout-columns: var(--layout-columns-md);
+        }
+    
+        @include token-container-query(lg) {
+            --layout-columns: var(--layout-columns-lg);
+        }
+    
+        @include token-container-query(xl) {
+            --layout-columns: var(--layout-columns-xl);
+        }
+    }
 }

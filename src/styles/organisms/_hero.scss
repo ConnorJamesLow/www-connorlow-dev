@@ -1,8 +1,7 @@
 @use "../tokens/main" as *;
 
 .hero {
-    padding-block: unit(8) unit(8);
-
+    position: relative;
     &:after {
         --gradient-1: linear-gradient(70deg, hsla(50, 100%, 50%, 0.5), transparent, hsla(240, 100%, 50%, 0.5), transparent, hsla(50, 100%, 50%, 0.5), transparent, hsla(240, 100%, 50%, 0.5));
         --gradient-2: linear-gradient(190deg, hsla(190, 100%, 50%, 0.5), transparent, hsla(300, 100%, 50%, 0.5), transparent, hsla(190, 100%, 50%, 0.5), transparent, hsla(300, 100%, 50%, 0.5));
@@ -15,19 +14,15 @@
         background-size: 400% auto;
         display: block;
         content: "";
-        position: absolute;
         inset: 0;
-        mask-image: linear-gradient(to bottom, #000f 1%, #000a 4%, #0004 10%, #0002 85%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000f 1%, #000a 4%, #0005 10%, #0003 80%, transparent 100%);
+        position: absolute;
+        z-index: -1;
 
         @media (prefers-reduced-motion: reduce) {
             animation: none;
             background: none;
         }
-    }
-
-    @include token-container-query(sm) {
-        padding-block-start: unit(16);
-        padding-inline: unit(8);
     }
 
     >.container {
@@ -41,13 +36,19 @@
         background-size: 300% auto;
         background-clip: text;
         color: transparent;
-        padding-inline: unit(3);
         position: relative;
 
         @media (prefers-reduced-motion: reduce) {
             animation: none;
             color: var(--color-text-primary, #fff);
         }
+    }
+}
+
+.hero__inner {
+    padding-block: unit(8);
+    @include token-container-query(sm) {
+        padding-block: unit(10) unit(20);
     }
 }
 
@@ -58,10 +59,6 @@
 
 .hero__subtitle {
     @include token-typography-hs(light);
-
-    @include token-media-min(lg) {
-        padding-inline-start: unit(1);
-    }
 }
 
 @keyframes gradient-animation {
