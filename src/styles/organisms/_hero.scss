@@ -1,47 +1,8 @@
 @use "../tokens/main" as *;
 
 .hero {
-    position: relative;
-    &:after {
-        --gradient-1: linear-gradient(70deg, hsla(50, 100%, 50%, 0.5), transparent, hsla(240, 100%, 50%, 0.5), transparent, hsla(50, 100%, 50%, 0.5), transparent, hsla(240, 100%, 50%, 0.5));
-        --gradient-2: linear-gradient(190deg, hsla(190, 100%, 50%, 0.5), transparent, hsla(300, 100%, 50%, 0.5), transparent, hsla(190, 100%, 50%, 0.5), transparent, hsla(300, 100%, 50%, 0.5));
-        --gradient-3: radial-gradient(circle, #ffff0008, #00ffff08, #ff00ff08, #0000ff08, transparent);
-        animation: gradient-animation 30s ease infinite;
-        animation-direction: alternate;
-        background: var(--gradient-1, linear-gradient(transparent, transparent)),
-            var(--gradient-2, linear-gradient(transparent, transparent)),
-            var(--gradient-3, linear-gradient(transparent, transparent));
-        background-size: 400% auto;
-        display: block;
-        content: "";
-        inset: 0;
-        mask-image: linear-gradient(to bottom, #000f 1%, #000a 4%, #0005 10%, #0003 80%, transparent 100%);
-        position: absolute;
-        z-index: -1;
-
-        @media (prefers-reduced-motion: reduce) {
-            animation: none;
-            background: none;
-        }
-    }
-
     >.container {
-        --gradient-1: linear-gradient(70deg, #ff8c, #dbf8, #8ff8, #f8fc, #ff8c);
-        --gradient-2: linear-gradient(200deg, #fff8, #ffff);
-        animation: gradient-animation 4s ease-in-out infinite;
-        animation-direction: alternate;
-        background: var(--gradient-1, linear-gradient(transparent, transparent)),
-            var(--gradient-2, linear-gradient(transparent, transparent)),
-            var(--gradient-3, linear-gradient(transparent, transparent));
-        background-size: 300% auto;
-        background-clip: text;
-        color: transparent;
         position: relative;
-
-        @media (prefers-reduced-motion: reduce) {
-            animation: none;
-            color: var(--color-text-primary, #fff);
-        }
     }
 }
 
