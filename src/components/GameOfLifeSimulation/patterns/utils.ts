@@ -3,13 +3,15 @@ import { oscillators } from "./oscillators";
 import { spaceships } from "./spaceships";
 import { stills } from "./stills";
 import { crackles } from "./crackles";
+import { guns } from "./guns";
 
 const patterns = {
     methuselahs,
     oscillators,
     spaceships,
     stills,
-    crackles
+    crackles,
+    guns
 };
 
 export const flattenedPatterns = Object.entries(patterns).flatMap(([category, patterns]) =>
@@ -58,13 +60,19 @@ export function getRandomPattern<T extends keyof typeof patterns>(
     limitCategories: T[] = Object.keys(patterns) as T[]): [number, number][] {
     const offsetX = ((Math.random() * (rangeX[1] - rangeX[0] + 1)) + rangeX[0]) | 0;
     const offsetY = ((Math.random() * (rangeY[1] - rangeY[0] + 1)) + rangeY[0]) | 0;
-    const category = limitCategories[Math.floor(Math.random() * limitCategories.length)];
-    const name = Object.keys(patterns[category])[
-        Math.floor(Math.random() * Object.keys(patterns[category]).length)
-    ] as keyof typeof patterns[T];
+    // To give each pattern equal weight, we need to combine the selected categories into a 
+    // single array before selecting a random pattern.
+    const combinedCategories = limitCategories.flatMap(
+        c => Object.keys(patterns[c]).flatMap(name => [[c, name]])
+    );
+    const [
+        category, 
+        name
+    ] = combinedCategories[Math.floor(Math.random() * combinedCategories.length)];
+    console.log('create:', category, name, 'at', offsetX, offsetY);
     return getLocalizedPattern(
-        category,
-        name,
+        category as T,
+        name as keyof typeof patterns[T],
         offsetX,
         offsetY,
         [Math.random() < 0.5, Math.random() < 0.5]);

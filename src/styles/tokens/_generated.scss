@@ -140,157 +140,619 @@ $breakpoints: (
 }
 
 @mixin typography-vars() {
-  --typography-hero01-font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
-  --typography-hero01-weight-light: 120;
-  --typography-hero01-font: normal var(--typography-hero01-weight-light) var(--typography-hero01-font-size) / var(--typography-hero01-line-height, normal) var(--typography-hero01-font-family);
-  --typography-hero01-font-size: 56px;
-  --typography-hero01-line-height: 56px;
-  --typography-hero01-letter-spacing: 1.2px;
-  --typography-hero01-text-transform: uppercase;
-  --typography-hero01-font-variation-settings: "opsz" 96, "wdth" 128, "GRAD" -180;
+  --typography-ht-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-ht-weight-light: 120;
+  --typography-ht-font: normal var(--typography-ht-weight-light) var(--typography-ht-font-size) / var(--typography-ht-line-height, normal) var(--typography-ht-font-family);
+  --typography-ht-font-size: 56px;
+  --typography-ht-line-height: 1;
+  --typography-ht-letter-spacing: 0.8px;
+  --typography-ht-text-transform: uppercase;
+  --typography-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
   @include media-min(sm) {
-    --typography-hero01-font-size: 64px;
-    --typography-hero01-line-height: 64px;
-    --typography-hero01-letter-spacing: 0.8px;
-    --typography-hero01-text-transform: uppercase;
-    --typography-hero01-font-variation-settings: "opsz" 128, "wdth" 128, "GRAD" -200;
+    --typography-ht-font-size: 64px;
+    --typography-ht-line-height: 1;
+    --typography-ht-letter-spacing: 0.6px;
+    --typography-ht-text-transform: uppercase;
+    --typography-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
+  }
+  @include media-min(md) {
+    --typography-ht-font-size: 64px;
+    --typography-ht-line-height: 1;
+    --typography-ht-letter-spacing: 0.6px;
+    --typography-ht-text-transform: uppercase;
+    --typography-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
   }
   @include media-min(lg) {
-    --typography-hero01-font-size: 128px;
-    --typography-hero01-line-height: 128px;
-    --typography-hero01-letter-spacing: 0.8px;
-    --typography-hero01-text-transform: uppercase;
-    --typography-hero01-font-variation-settings: "opsz" 128, "wdth" 128, "GRAD" -200;
+    --typography-ht-font-size: 128px;
+    --typography-ht-line-height: 1;
+    --typography-ht-letter-spacing: 0.4px;
+    --typography-ht-text-transform: uppercase;
+    --typography-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
   }
   @include media-min(xl) {
-    --typography-hero01-font-size: 160px;
-    --typography-hero01-line-height: 160px;
-    --typography-hero01-letter-spacing: 0.6px;
-    --typography-hero01-text-transform: uppercase;
-    --typography-hero01-font-variation-settings: "opsz" 160, "wdth" 128, "GRAD" -200;
+    --typography-ht-font-size: 128px;
+    --typography-ht-line-height: 1;
+    --typography-ht-letter-spacing: 0.4px;
+    --typography-ht-text-transform: uppercase;
+    --typography-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
   }
 
-  --typography-hero02-font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
-  --typography-hero02-weight-light: 190;
-  --typography-hero02-font: normal var(--typography-hero02-weight-light) var(--typography-hero02-font-size) / var(--typography-hero02-line-height, normal) var(--typography-hero02-font-family);
-  --typography-hero02-font-size: 28px;
-  --typography-hero02-line-height: 32px;
-  --typography-hero02-letter-spacing: 0.8px;
-  --typography-hero02-text-transform: lowercase;
-  --typography-hero02-font-variation-settings: "opsz" 48, "wdth" 110;
-  @include media-min(md) {
-    --typography-hero02-font-size: 48px;
-    --typography-hero02-line-height: 56px;
-    --typography-hero02-letter-spacing: 1.2px;
-    --typography-hero02-text-transform: lowercase;
-    --typography-hero02-font-variation-settings: "opsz" 48, "wdth" 128;
-  }
-
-  --typography-headline01-font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
-  --typography-headline01-weight-normal: 460;
-  --typography-headline01-font: normal var(--typography-headline01-weight-normal) var(--typography-headline01-font-size) / var(--typography-headline01-line-height, normal) var(--typography-headline01-font-family);
-  --typography-headline01-font-size: 30px;
-  --typography-headline01-line-height: 32px;
-  --typography-headline01-letter-spacing: 0.8px;
-  --typography-headline01-text-transform: uppercase;
+  --typography-hs-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-hs-weight-light: 120;
+  --typography-hs-font: normal var(--typography-hs-weight-light) var(--typography-hs-font-size) / var(--typography-hs-line-height, normal) var(--typography-hs-font-family);
+  --typography-hs-font-size: 28px;
+  --typography-hs-line-height: 32px;
+  --typography-hs-letter-spacing: 1px;
+  --typography-hs-text-transform: lowercase;
+  --typography-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 56;
   @include media-min(sm) {
-    --typography-headline01-font-size: 46px;
-    --typography-headline01-line-height: 48px;
-    --typography-headline01-letter-spacing: 1.2px;
-    --typography-headline01-text-transform: uppercase;
+    --typography-hs-font-size: 28px;
+    --typography-hs-line-height: 32px;
+    --typography-hs-letter-spacing: 1px;
+    --typography-hs-text-transform: lowercase;
+    --typography-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 56;
   }
   @include media-min(md) {
-    --typography-headline01-font-size: 60px;
-    --typography-headline01-line-height: 64px;
-    --typography-headline01-letter-spacing: 1.38px;
-    --typography-headline01-text-transform: uppercase;
-  }
-
-  --typography-body01-font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
-  --typography-body01-weight-normal: 480;
-  --typography-body01-weight-bold: 620;
-  --typography-body01-font: normal var(--typography-body01-weight-normal) var(--typography-body01-font-size) / var(--typography-body01-line-height, normal) var(--typography-body01-font-family);
-  --typography-body01-font-size: 16px;
-  --typography-body01-line-height: 24px;
-  @include media-min(md) {
-    --typography-body01-font-size: 16px;
-    --typography-body01-line-height: 24px;
+    --typography-hs-font-size: 48px;
+    --typography-hs-line-height: 56px;
+    --typography-hs-letter-spacing: 1px;
+    --typography-hs-text-transform: lowercase;
+    --typography-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 128;
   }
   @include media-min(lg) {
-    --typography-body01-font-size: 18px;
-    --typography-body01-line-height: 24px;
+    --typography-hs-font-size: 54px;
+    --typography-hs-line-height: 64px;
+    --typography-hs-letter-spacing: 0.8px;
+    --typography-hs-text-transform: lowercase;
+    --typography-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 56;
+  }
+  @include media-min(xl) {
+    --typography-hs-font-size: 54px;
+    --typography-hs-line-height: 64px;
+    --typography-hs-letter-spacing: 0.8px;
+    --typography-hs-text-transform: lowercase;
+    --typography-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 56;
+  }
+
+  --typography-hl01-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-hl01-weight-normal: 580;
+  --typography-hl01-font: normal var(--typography-hl01-weight-normal) var(--typography-hl01-font-size) / var(--typography-hl01-line-height, normal) var(--typography-hl01-font-family);
+  --typography-hl01-font-size: 30px;
+  --typography-hl01-line-height: 32px;
+  --typography-hl01-letter-spacing: 0.8px;
+  --typography-hl01-text-transform: none;
+  --typography-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+  @include media-min(sm) {
+    --typography-hl01-font-size: 46px;
+    --typography-hl01-line-height: 48px;
+    --typography-hl01-letter-spacing: 1.2px;
+    --typography-hl01-text-transform: none;
+    --typography-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(md) {
+    --typography-hl01-font-size: 60px;
+    --typography-hl01-line-height: 64px;
+    --typography-hl01-letter-spacing: 1.28px;
+    --typography-hl01-text-transform: none;
+    --typography-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(lg) {
+    --typography-hl01-font-size: 60px;
+    --typography-hl01-line-height: 64px;
+    --typography-hl01-letter-spacing: 1.28px;
+    --typography-hl01-text-transform: none;
+    --typography-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(xl) {
+    --typography-hl01-font-size: 60px;
+    --typography-hl01-line-height: 64px;
+    --typography-hl01-letter-spacing: 1.28px;
+    --typography-hl01-text-transform: none;
+    --typography-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+
+  --typography-pg01-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-pg01-weight-normal: 380;
+  --typography-pg01-font: normal var(--typography-pg01-weight-normal) var(--typography-pg01-font-size) / var(--typography-pg01-line-height, normal) var(--typography-pg01-font-family);
+  --typography-pg01-font-size: 16px;
+  --typography-pg01-line-height: 24px;
+  --typography-pg01-letter-spacing: normal;
+  --typography-pg01-text-transform: none;
+  --typography-pg01-font-variation-settings: normal;
+  @include media-min(sm) {
+    --typography-pg01-font-size: 16px;
+    --typography-pg01-line-height: 24px;
+    --typography-pg01-letter-spacing: normal;
+    --typography-pg01-text-transform: none;
+    --typography-pg01-font-variation-settings: normal;
+  }
+  @include media-min(md) {
+    --typography-pg01-font-size: 18px;
+    --typography-pg01-line-height: 24px;
+    --typography-pg01-letter-spacing: normal;
+    --typography-pg01-text-transform: none;
+    --typography-pg01-font-variation-settings: normal;
+  }
+  @include media-min(lg) {
+    --typography-pg01-font-size: 18px;
+    --typography-pg01-line-height: 24px;
+    --typography-pg01-letter-spacing: normal;
+    --typography-pg01-text-transform: none;
+    --typography-pg01-font-variation-settings: normal;
+  }
+  @include media-min(xl) {
+    --typography-pg01-font-size: 18px;
+    --typography-pg01-line-height: 24px;
+    --typography-pg01-letter-spacing: normal;
+    --typography-pg01-text-transform: none;
+    --typography-pg01-font-variation-settings: normal;
+  }
+
+  --typography-pg01-bold-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-pg01-bold-weight-bold: 620;
+  --typography-pg01-bold-font: normal var(--typography-pg01-bold-weight-bold) var(--typography-pg01-bold-font-size) / var(--typography-pg01-bold-line-height, normal) var(--typography-pg01-bold-font-family);
+  --typography-pg01-bold-font-size: 16px;
+  --typography-pg01-bold-line-height: 24px;
+  --typography-pg01-bold-letter-spacing: 0.24px;
+  --typography-pg01-bold-text-transform: none;
+  --typography-pg01-bold-font-variation-settings: "GRAD" 150;
+  @include media-min(sm) {
+    --typography-pg01-bold-font-size: 16px;
+    --typography-pg01-bold-line-height: 24px;
+    --typography-pg01-bold-letter-spacing: 0.24px;
+    --typography-pg01-bold-text-transform: none;
+    --typography-pg01-bold-font-variation-settings: "GRAD" 150;
+  }
+  @include media-min(md) {
+    --typography-pg01-bold-font-size: 18px;
+    --typography-pg01-bold-line-height: 24px;
+    --typography-pg01-bold-letter-spacing: 0.32px;
+    --typography-pg01-bold-text-transform: none;
+    --typography-pg01-bold-font-variation-settings: "GRAD" 150;
+  }
+  @include media-min(lg) {
+    --typography-pg01-bold-font-size: 18px;
+    --typography-pg01-bold-line-height: 24px;
+    --typography-pg01-bold-letter-spacing: 0.32px;
+    --typography-pg01-bold-text-transform: none;
+    --typography-pg01-bold-font-variation-settings: "GRAD" 150;
+  }
+  @include media-min(xl) {
+    --typography-pg01-bold-font-size: 18px;
+    --typography-pg01-bold-line-height: 24px;
+    --typography-pg01-bold-letter-spacing: 0.32px;
+    --typography-pg01-bold-text-transform: none;
+    --typography-pg01-bold-font-variation-settings: "GRAD" 150;
+  }
+
+  --typography-ui01-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-ui01-weight-normal: 380;
+  --typography-ui01-font: normal var(--typography-ui01-weight-normal) var(--typography-ui01-font-size) / var(--typography-ui01-line-height, normal) var(--typography-ui01-font-family);
+  --typography-ui01-font-size: 16px;
+  --typography-ui01-line-height: 1;
+  --typography-ui01-letter-spacing: normal;
+  --typography-ui01-text-transform: none;
+  --typography-ui01-font-variation-settings: normal;
+  @include media-min(sm) {
+    --typography-ui01-font-size: 16px;
+    --typography-ui01-line-height: 1;
+    --typography-ui01-letter-spacing: normal;
+    --typography-ui01-text-transform: none;
+    --typography-ui01-font-variation-settings: normal;
+  }
+  @include media-min(md) {
+    --typography-ui01-font-size: 18px;
+    --typography-ui01-line-height: 1;
+    --typography-ui01-letter-spacing: normal;
+    --typography-ui01-text-transform: none;
+    --typography-ui01-font-variation-settings: normal;
+  }
+  @include media-min(lg) {
+    --typography-ui01-font-size: 18px;
+    --typography-ui01-line-height: 1;
+    --typography-ui01-letter-spacing: normal;
+    --typography-ui01-text-transform: none;
+    --typography-ui01-font-variation-settings: normal;
+  }
+  @include media-min(xl) {
+    --typography-ui01-font-size: 18px;
+    --typography-ui01-line-height: 1;
+    --typography-ui01-letter-spacing: normal;
+    --typography-ui01-text-transform: none;
+    --typography-ui01-font-variation-settings: normal;
+  }
+
+  --typography-hl03-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-hl03-weight-normal: 580;
+  --typography-hl03-font: normal var(--typography-hl03-weight-normal) var(--typography-hl03-font-size) / var(--typography-hl03-line-height, normal) var(--typography-hl03-font-family);
+  --typography-hl03-font-size: 22px;
+  --typography-hl03-line-height: 24px;
+  --typography-hl03-letter-spacing: normal;
+  --typography-hl03-text-transform: none;
+  --typography-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+  @include media-min(sm) {
+    --typography-hl03-font-size: 30px;
+    --typography-hl03-line-height: 32px;
+    --typography-hl03-letter-spacing: 0.4px;
+    --typography-hl03-text-transform: none;
+    --typography-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(md) {
+    --typography-hl03-font-size: 40px;
+    --typography-hl03-line-height: 48px;
+    --typography-hl03-letter-spacing: normal;
+    --typography-hl03-text-transform: none;
+    --typography-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(lg) {
+    --typography-hl03-font-size: 40px;
+    --typography-hl03-line-height: 48px;
+    --typography-hl03-letter-spacing: normal;
+    --typography-hl03-text-transform: none;
+    --typography-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(xl) {
+    --typography-hl03-font-size: 40px;
+    --typography-hl03-line-height: 48px;
+    --typography-hl03-letter-spacing: normal;
+    --typography-hl03-text-transform: none;
+    --typography-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+
+  --typography-hl02-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-hl02-weight-normal: 580;
+  --typography-hl02-font: normal var(--typography-hl02-weight-normal) var(--typography-hl02-font-size) / var(--typography-hl02-line-height, normal) var(--typography-hl02-font-family);
+  --typography-hl02-font-size: 26px;
+  --typography-hl02-line-height: 32px;
+  --typography-hl02-letter-spacing: 0.64px;
+  --typography-hl02-text-transform: none;
+  --typography-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+  @include media-min(sm) {
+    --typography-hl02-font-size: 36px;
+    --typography-hl02-line-height: 40px;
+    --typography-hl02-letter-spacing: 0.64px;
+    --typography-hl02-text-transform: none;
+    --typography-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(md) {
+    --typography-hl02-font-size: 50px;
+    --typography-hl02-line-height: 56px;
+    --typography-hl02-letter-spacing: 0.64px;
+    --typography-hl02-text-transform: none;
+    --typography-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(lg) {
+    --typography-hl02-font-size: 50px;
+    --typography-hl02-line-height: 56px;
+    --typography-hl02-letter-spacing: 0.64px;
+    --typography-hl02-text-transform: none;
+    --typography-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+  @include media-min(xl) {
+    --typography-hl02-font-size: 50px;
+    --typography-hl02-line-height: 56px;
+    --typography-hl02-letter-spacing: 0.64px;
+    --typography-hl02-text-transform: none;
+    --typography-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+  }
+
+  --typography-ms-font-family: "Fira Code", "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --typography-ms-weight-normal: 320;
+  --typography-ms-font: normal var(--typography-ms-weight-normal) var(--typography-ms-font-size) / var(--typography-ms-line-height, normal) var(--typography-ms-font-family);
+  --typography-ms-font-size: 13px;
+  --typography-ms-line-height: 16px;
+  --typography-ms-letter-spacing: normal;
+  --typography-ms-text-transform: none;
+  --typography-ms-font-variation-settings: normal;
+  @include media-min(sm) {
+    --typography-ms-font-size: 14px;
+    --typography-ms-line-height: 16px;
+    --typography-ms-letter-spacing: normal;
+    --typography-ms-text-transform: none;
+    --typography-ms-font-variation-settings: normal;
+  }
+  @include media-min(md) {
+    --typography-ms-font-size: 14px;
+    --typography-ms-line-height: 16px;
+    --typography-ms-letter-spacing: normal;
+    --typography-ms-text-transform: none;
+    --typography-ms-font-variation-settings: normal;
+  }
+  @include media-min(lg) {
+    --typography-ms-font-size: 14px;
+    --typography-ms-line-height: 16px;
+    --typography-ms-letter-spacing: normal;
+    --typography-ms-text-transform: none;
+    --typography-ms-font-variation-settings: normal;
+  }
+  @include media-min(xl) {
+    --typography-ms-font-size: 14px;
+    --typography-ms-line-height: 16px;
+    --typography-ms-letter-spacing: normal;
+    --typography-ms-text-transform: none;
+    --typography-ms-font-variation-settings: normal;
+  }
+
+  --typography-pg02-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-pg02-weight-normal: 380;
+  --typography-pg02-font: normal var(--typography-pg02-weight-normal) var(--typography-pg02-font-size) / var(--typography-pg02-line-height, normal) var(--typography-pg02-font-family);
+  --typography-pg02-font-size: 13px;
+  --typography-pg02-line-height: 16px;
+  --typography-pg02-letter-spacing: 0.08px;
+  --typography-pg02-text-transform: none;
+  --typography-pg02-font-variation-settings: normal;
+  @include media-min(sm) {
+    --typography-pg02-font-size: 13px;
+    --typography-pg02-line-height: 16px;
+    --typography-pg02-letter-spacing: 0.08px;
+    --typography-pg02-text-transform: none;
+    --typography-pg02-font-variation-settings: normal;
+  }
+  @include media-min(md) {
+    --typography-pg02-font-size: 15px;
+    --typography-pg02-line-height: 16px;
+    --typography-pg02-letter-spacing: 0;
+    --typography-pg02-text-transform: none;
+    --typography-pg02-font-variation-settings: normal;
+  }
+  @include media-min(lg) {
+    --typography-pg02-font-size: 15px;
+    --typography-pg02-line-height: 16px;
+    --typography-pg02-letter-spacing: 0;
+    --typography-pg02-text-transform: none;
+    --typography-pg02-font-variation-settings: normal;
+  }
+  @include media-min(xl) {
+    --typography-pg02-font-size: 15px;
+    --typography-pg02-line-height: 16px;
+    --typography-pg02-letter-spacing: 0;
+    --typography-pg02-text-transform: none;
+    --typography-pg02-font-variation-settings: normal;
+  }
+
+  --typography-pg02-bold-font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
+  --typography-pg02-bold-weight-bold: 620;
+  --typography-pg02-bold-font: normal var(--typography-pg02-bold-weight-bold) var(--typography-pg02-bold-font-size) / var(--typography-pg02-bold-line-height, normal) var(--typography-pg02-bold-font-family);
+  --typography-pg02-bold-font-size: 13px;
+  --typography-pg02-bold-line-height: 16px;
+  --typography-pg02-bold-letter-spacing: 0.24px;
+  --typography-pg02-bold-text-transform: none;
+  --typography-pg02-bold-font-variation-settings: "GRAD" 150;
+  @include media-min(sm) {
+    --typography-pg02-bold-font-size: 13px;
+    --typography-pg02-bold-line-height: 16px;
+    --typography-pg02-bold-letter-spacing: 0.24px;
+    --typography-pg02-bold-text-transform: none;
+    --typography-pg02-bold-font-variation-settings: "GRAD" 150;
+  }
+  @include media-min(md) {
+    --typography-pg02-bold-font-size: 15px;
+    --typography-pg02-bold-line-height: 16px;
+    --typography-pg02-bold-letter-spacing: 0.16px;
+    --typography-pg02-bold-text-transform: none;
+    --typography-pg02-bold-font-variation-settings: "GRAD" 150;
+  }
+  @include media-min(lg) {
+    --typography-pg02-bold-font-size: 15px;
+    --typography-pg02-bold-line-height: 16px;
+    --typography-pg02-bold-letter-spacing: 0.16px;
+    --typography-pg02-bold-text-transform: none;
+    --typography-pg02-bold-font-variation-settings: "GRAD" 150;
+  }
+  @include media-min(xl) {
+    --typography-pg02-bold-font-size: 15px;
+    --typography-pg02-bold-line-height: 16px;
+    --typography-pg02-bold-letter-spacing: 0.16px;
+    --typography-pg02-bold-text-transform: none;
+    --typography-pg02-bold-font-variation-settings: "GRAD" 150;
   }
 }
 
-$typography-hero01-weights: (
+$typography-ht-weights: (
   light: 120,
 );
 
-@function typography-hero01-weight($weight: light) {
-  @if not map.has-key($typography-hero01-weights, $weight) {
-    @error "Unknown weight `#{$weight}` for typography token `hero01`.";
+@function typography-ht-weight($weight: light) {
+  @if not map.has-key($typography-ht-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `ht`.";
   }
 
-  @return map.get($typography-hero01-weights, $weight);
+  @return map.get($typography-ht-weights, $weight);
 }
 
-@mixin typography-hero01($weight: light) {
-  font: normal typography-hero01-weight($weight) var(--typography-hero01-font-size)/var(--typography-hero01-line-height, normal) var(--typography-hero01-font-family);
-  letter-spacing: var(--typography-hero01-letter-spacing, normal);
-  text-transform: var(--typography-hero01-text-transform, none);
-  font-variation-settings: var(--typography-hero01-font-variation-settings, normal);
+@mixin typography-ht($weight: light) {
+  font: normal typography-ht-weight($weight) var(--typography-ht-font-size)/var(--typography-ht-line-height, normal) var(--typography-ht-font-family);
+  letter-spacing: var(--typography-ht-letter-spacing, normal);
+  text-transform: var(--typography-ht-text-transform, none);
+  font-variation-settings: var(--typography-ht-font-variation-settings, normal);
 }
 
-$typography-hero02-weights: (
-  light: 190,
+$typography-hs-weights: (
+  light: 120,
 );
 
-@function typography-hero02-weight($weight: light) {
-  @if not map.has-key($typography-hero02-weights, $weight) {
-    @error "Unknown weight `#{$weight}` for typography token `hero02`.";
+@function typography-hs-weight($weight: light) {
+  @if not map.has-key($typography-hs-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `hs`.";
   }
 
-  @return map.get($typography-hero02-weights, $weight);
+  @return map.get($typography-hs-weights, $weight);
 }
 
-@mixin typography-hero02($weight: light) {
-  font: normal typography-hero02-weight($weight) var(--typography-hero02-font-size)/var(--typography-hero02-line-height, normal) var(--typography-hero02-font-family);
-  letter-spacing: var(--typography-hero02-letter-spacing, normal);
-  text-transform: var(--typography-hero02-text-transform, none);
-  font-variation-settings: var(--typography-hero02-font-variation-settings, normal);
+@mixin typography-hs($weight: light) {
+  font: normal typography-hs-weight($weight) var(--typography-hs-font-size)/var(--typography-hs-line-height, normal) var(--typography-hs-font-family);
+  letter-spacing: var(--typography-hs-letter-spacing, normal);
+  text-transform: var(--typography-hs-text-transform, none);
+  font-variation-settings: var(--typography-hs-font-variation-settings, normal);
 }
 
-$typography-headline01-weights: (
-  normal: 460,
+$typography-hl01-weights: (
+  normal: 580,
 );
 
-@function typography-headline01-weight($weight: normal) {
-  @if not map.has-key($typography-headline01-weights, $weight) {
-    @error "Unknown weight `#{$weight}` for typography token `headline01`.";
+@function typography-hl01-weight($weight: normal) {
+  @if not map.has-key($typography-hl01-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `hl01`.";
   }
 
-  @return map.get($typography-headline01-weights, $weight);
+  @return map.get($typography-hl01-weights, $weight);
 }
 
-@mixin typography-headline01($weight: normal) {
-  font: normal typography-headline01-weight($weight) var(--typography-headline01-font-size)/var(--typography-headline01-line-height, normal) var(--typography-headline01-font-family);
-  letter-spacing: var(--typography-headline01-letter-spacing, normal);
-  text-transform: var(--typography-headline01-text-transform, none);
+@mixin typography-hl01($weight: normal) {
+  font: normal typography-hl01-weight($weight) var(--typography-hl01-font-size)/var(--typography-hl01-line-height, normal) var(--typography-hl01-font-family);
+  letter-spacing: var(--typography-hl01-letter-spacing, normal);
+  text-transform: var(--typography-hl01-text-transform, none);
+  font-variation-settings: var(--typography-hl01-font-variation-settings, normal);
 }
 
-$typography-body01-weights: (
-  normal: 480,
+$typography-pg01-weights: (
+  normal: 380,
+);
+
+@function typography-pg01-weight($weight: normal) {
+  @if not map.has-key($typography-pg01-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `pg01`.";
+  }
+
+  @return map.get($typography-pg01-weights, $weight);
+}
+
+@mixin typography-pg01($weight: normal) {
+  font: normal typography-pg01-weight($weight) var(--typography-pg01-font-size)/var(--typography-pg01-line-height, normal) var(--typography-pg01-font-family);
+  letter-spacing: var(--typography-pg01-letter-spacing, normal);
+  text-transform: var(--typography-pg01-text-transform, none);
+  font-variation-settings: var(--typography-pg01-font-variation-settings, normal);
+}
+
+$typography-pg01-bold-weights: (
   bold: 620,
 );
 
-@function typography-body01-weight($weight: normal) {
-  @if not map.has-key($typography-body01-weights, $weight) {
-    @error "Unknown weight `#{$weight}` for typography token `body01`.";
+@function typography-pg01-bold-weight($weight: bold) {
+  @if not map.has-key($typography-pg01-bold-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `pg01-bold`.";
   }
 
-  @return map.get($typography-body01-weights, $weight);
+  @return map.get($typography-pg01-bold-weights, $weight);
 }
 
-@mixin typography-body01($weight: normal) {
-  font: normal typography-body01-weight($weight) var(--typography-body01-font-size)/var(--typography-body01-line-height, normal) var(--typography-body01-font-family);
+@mixin typography-pg01-bold($weight: bold) {
+  font: normal typography-pg01-bold-weight($weight) var(--typography-pg01-bold-font-size)/var(--typography-pg01-bold-line-height, normal) var(--typography-pg01-bold-font-family);
+  letter-spacing: var(--typography-pg01-bold-letter-spacing, normal);
+  text-transform: var(--typography-pg01-bold-text-transform, none);
+  font-variation-settings: var(--typography-pg01-bold-font-variation-settings, normal);
+}
+
+$typography-ui01-weights: (
+  normal: 380,
+);
+
+@function typography-ui01-weight($weight: normal) {
+  @if not map.has-key($typography-ui01-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `ui01`.";
+  }
+
+  @return map.get($typography-ui01-weights, $weight);
+}
+
+@mixin typography-ui01($weight: normal) {
+  font: normal typography-ui01-weight($weight) var(--typography-ui01-font-size)/var(--typography-ui01-line-height, normal) var(--typography-ui01-font-family);
+  letter-spacing: var(--typography-ui01-letter-spacing, normal);
+  text-transform: var(--typography-ui01-text-transform, none);
+  font-variation-settings: var(--typography-ui01-font-variation-settings, normal);
+}
+
+$typography-hl03-weights: (
+  normal: 580,
+);
+
+@function typography-hl03-weight($weight: normal) {
+  @if not map.has-key($typography-hl03-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `hl03`.";
+  }
+
+  @return map.get($typography-hl03-weights, $weight);
+}
+
+@mixin typography-hl03($weight: normal) {
+  font: normal typography-hl03-weight($weight) var(--typography-hl03-font-size)/var(--typography-hl03-line-height, normal) var(--typography-hl03-font-family);
+  letter-spacing: var(--typography-hl03-letter-spacing, normal);
+  text-transform: var(--typography-hl03-text-transform, none);
+  font-variation-settings: var(--typography-hl03-font-variation-settings, normal);
+}
+
+$typography-hl02-weights: (
+  normal: 580,
+);
+
+@function typography-hl02-weight($weight: normal) {
+  @if not map.has-key($typography-hl02-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `hl02`.";
+  }
+
+  @return map.get($typography-hl02-weights, $weight);
+}
+
+@mixin typography-hl02($weight: normal) {
+  font: normal typography-hl02-weight($weight) var(--typography-hl02-font-size)/var(--typography-hl02-line-height, normal) var(--typography-hl02-font-family);
+  letter-spacing: var(--typography-hl02-letter-spacing, normal);
+  text-transform: var(--typography-hl02-text-transform, none);
+  font-variation-settings: var(--typography-hl02-font-variation-settings, normal);
+}
+
+$typography-ms-weights: (
+  normal: 320,
+);
+
+@function typography-ms-weight($weight: normal) {
+  @if not map.has-key($typography-ms-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `ms`.";
+  }
+
+  @return map.get($typography-ms-weights, $weight);
+}
+
+@mixin typography-ms($weight: normal) {
+  font: normal typography-ms-weight($weight) var(--typography-ms-font-size)/var(--typography-ms-line-height, normal) var(--typography-ms-font-family);
+  letter-spacing: var(--typography-ms-letter-spacing, normal);
+  text-transform: var(--typography-ms-text-transform, none);
+  font-variation-settings: var(--typography-ms-font-variation-settings, normal);
+}
+
+$typography-pg02-weights: (
+  normal: 380,
+);
+
+@function typography-pg02-weight($weight: normal) {
+  @if not map.has-key($typography-pg02-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `pg02`.";
+  }
+
+  @return map.get($typography-pg02-weights, $weight);
+}
+
+@mixin typography-pg02($weight: normal) {
+  font: normal typography-pg02-weight($weight) var(--typography-pg02-font-size)/var(--typography-pg02-line-height, normal) var(--typography-pg02-font-family);
+  letter-spacing: var(--typography-pg02-letter-spacing, normal);
+  text-transform: var(--typography-pg02-text-transform, none);
+  font-variation-settings: var(--typography-pg02-font-variation-settings, normal);
+}
+
+$typography-pg02-bold-weights: (
+  bold: 620,
+);
+
+@function typography-pg02-bold-weight($weight: bold) {
+  @if not map.has-key($typography-pg02-bold-weights, $weight) {
+    @error "Unknown weight `#{$weight}` for typography token `pg02-bold`.";
+  }
+
+  @return map.get($typography-pg02-bold-weights, $weight);
+}
+
+@mixin typography-pg02-bold($weight: bold) {
+  font: normal typography-pg02-bold-weight($weight) var(--typography-pg02-bold-font-size)/var(--typography-pg02-bold-line-height, normal) var(--typography-pg02-bold-font-family);
+  letter-spacing: var(--typography-pg02-bold-letter-spacing, normal);
+  text-transform: var(--typography-pg02-bold-text-transform, none);
+  font-variation-settings: var(--typography-pg02-bold-font-variation-settings, normal);
 }

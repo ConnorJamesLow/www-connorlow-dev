@@ -1,0 +1,57 @@
+{
+  "exportId": "44d702db-2aa0-489c-b26d-163ad69181ff",
+  "projectId": "cmo3j4zdc0000y4z0efddcyuc",
+  "projectSlug": "www-connorlow-dev-1",
+  "unicodes": "U+0020-007E",
+  "fonts": [
+    {
+      "familyName": "Roboto Flex",
+      "selectedVariantKey": "regular",
+      "sourceFileUrl": "https://fonts.gstatic.com/s/robotoflex/v30/NaPccZLOBv5T3oB7Cb4i0wu4TsDOCZRS.woff2",
+      "outputFile": "font-0.woff2",
+      "sourceBytes": 747084,
+      "outputBytes": 202688
+    },
+    {
+      "familyName": "Fira Code",
+      "selectedVariantKey": "regular",
+      "sourceFileUrl": "https://fonts.gstatic.com/s/firacode/v27/uU9NCBsR6Z2vfE9aq3bR396CilKOdQ.woff2",
+      "outputFile": "font-1.woff2",
+      "sourceBytes": 108892,
+      "outputBytes": 31008
+    }
+  ],
+  "files": [
+    {
+      "name": "font-0.woff2",
+      "bytes": 202688,
+      "role": "font"
+    },
+    {
+      "name": "font-1.woff2",
+      "bytes": 31008,
+      "role": "font"
+    },
+    {
+      "name": "project.json",
+      "bytes": 21574,
+      "role": "json"
+    },
+    {
+      "name": "tokens.json",
+      "bytes": 18765,
+      "role": "json"
+    },
+    {
+      "name": "tokens.ts",
+      "bytes": 18330,
+      "role": "ts"
+    },
+    {
+      "name": "typography.css",
+      "bytes": 32364,
+      "role": "css"
+    }
+  ],
+  "createdAt": "2026-04-18T00:29:33.420Z"
+}

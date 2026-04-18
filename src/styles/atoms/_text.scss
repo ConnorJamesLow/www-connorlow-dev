@@ -1,5 +1,5 @@
 @use "../tokens/main" as *;
 
 .h1 {
-    @include token-typography-headline01(normal);
+    @include token-typography-hl01(normal);
 }

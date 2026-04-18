@@ -23,13 +23,13 @@ title {
 }
 
 body {
-  font-family: "Roboto Flex Local", "Roboto Flex", system-ui, -apple-system, sans-serif;
+  font-family: "Roboto Flex", system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #000;
   color: #e0e0e0;
 
-  @include token-typography-body01();
+  @include token-typography-pg01();
 }
 
 .content-wrapper {

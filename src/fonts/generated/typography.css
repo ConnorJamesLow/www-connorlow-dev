@@ -1,0 +1,537 @@
+/* Typography Designer — www-connorlow-dev (www-connorlow-dev-1) */
+
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url('./font-0.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 1000;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  src: url('./font-1.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300 700;
+
+  font-display: swap;
+}
+
+:root {
+  --typography-www-connorlow-dev-1-ht-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-ht-font-size: 56px;
+  --typography-www-connorlow-dev-1-ht-font-weight: 120;
+  --typography-www-connorlow-dev-1-ht-line-height: 1;
+  --typography-www-connorlow-dev-1-ht-text-transform: uppercase;
+  --typography-www-connorlow-dev-1-ht-letter-spacing: 0.8px;
+  --typography-www-connorlow-dev-1-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
+  --typography-www-connorlow-dev-1-hs-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-hs-font-size: 28px;
+  --typography-www-connorlow-dev-1-hs-font-weight: 120;
+  --typography-www-connorlow-dev-1-hs-line-height: 32px;
+  --typography-www-connorlow-dev-1-hs-text-transform: lowercase;
+  --typography-www-connorlow-dev-1-hs-letter-spacing: 1px;
+  --typography-www-connorlow-dev-1-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 56;
+  --typography-www-connorlow-dev-1-hl01-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-hl01-font-size: 30px;
+  --typography-www-connorlow-dev-1-hl01-font-weight: 580;
+  --typography-www-connorlow-dev-1-hl01-line-height: 32px;
+  --typography-www-connorlow-dev-1-hl01-text-transform: none;
+  --typography-www-connorlow-dev-1-hl01-letter-spacing: .8px;
+  --typography-www-connorlow-dev-1-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+  --typography-www-connorlow-dev-1-pg01-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-pg01-font-size: 16px;
+  --typography-www-connorlow-dev-1-pg01-font-weight: 380;
+  --typography-www-connorlow-dev-1-pg01-line-height: 24px;
+  --typography-www-connorlow-dev-1-pg01-text-transform: none;
+  --typography-www-connorlow-dev-1-pg01-letter-spacing: normal;
+  --typography-www-connorlow-dev-1-pg01-font-variation-settings: normal;
+  --typography-www-connorlow-dev-1-pg01-bold-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-pg01-bold-font-size: 16px;
+  --typography-www-connorlow-dev-1-pg01-bold-font-weight: 620;
+  --typography-www-connorlow-dev-1-pg01-bold-line-height: 24px;
+  --typography-www-connorlow-dev-1-pg01-bold-text-transform: none;
+  --typography-www-connorlow-dev-1-pg01-bold-letter-spacing: 0.24px;
+  --typography-www-connorlow-dev-1-pg01-bold-font-variation-settings: "GRAD" 150;
+  --typography-www-connorlow-dev-1-ui01-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-ui01-font-size: 16px;
+  --typography-www-connorlow-dev-1-ui01-font-weight: 380;
+  --typography-www-connorlow-dev-1-ui01-line-height: 1;
+  --typography-www-connorlow-dev-1-ui01-text-transform: none;
+  --typography-www-connorlow-dev-1-ui01-letter-spacing: normal;
+  --typography-www-connorlow-dev-1-ui01-font-variation-settings: normal;
+  --typography-www-connorlow-dev-1-hl03-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-hl03-font-size: 22px;
+  --typography-www-connorlow-dev-1-hl03-font-weight: 580;
+  --typography-www-connorlow-dev-1-hl03-line-height: 24px;
+  --typography-www-connorlow-dev-1-hl03-text-transform: none;
+  --typography-www-connorlow-dev-1-hl03-letter-spacing: normal;
+  --typography-www-connorlow-dev-1-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+  --typography-www-connorlow-dev-1-hl02-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-hl02-font-size: 26px;
+  --typography-www-connorlow-dev-1-hl02-font-weight: 580;
+  --typography-www-connorlow-dev-1-hl02-line-height: 32px;
+  --typography-www-connorlow-dev-1-hl02-text-transform: none;
+  --typography-www-connorlow-dev-1-hl02-letter-spacing: 0.64px;
+  --typography-www-connorlow-dev-1-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+  --typography-www-connorlow-dev-1-ms-font-family: 'Fira Code';
+  --typography-www-connorlow-dev-1-ms-font-size: 13px;
+  --typography-www-connorlow-dev-1-ms-font-weight: 320;
+  --typography-www-connorlow-dev-1-ms-line-height: 16px;
+  --typography-www-connorlow-dev-1-ms-text-transform: none;
+  --typography-www-connorlow-dev-1-ms-letter-spacing: normal;
+  --typography-www-connorlow-dev-1-ms-font-variation-settings: normal;
+  --typography-www-connorlow-dev-1-pg02-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-pg02-font-size: 13px;
+  --typography-www-connorlow-dev-1-pg02-font-weight: 380;
+  --typography-www-connorlow-dev-1-pg02-line-height: 16px;
+  --typography-www-connorlow-dev-1-pg02-text-transform: none;
+  --typography-www-connorlow-dev-1-pg02-letter-spacing: 0.08px;
+  --typography-www-connorlow-dev-1-pg02-font-variation-settings: normal;
+  --typography-www-connorlow-dev-1-pg02-bold-font-family: 'Roboto Flex';
+  --typography-www-connorlow-dev-1-pg02-bold-font-size: 13px;
+  --typography-www-connorlow-dev-1-pg02-bold-font-weight: 620;
+  --typography-www-connorlow-dev-1-pg02-bold-line-height: 16px;
+  --typography-www-connorlow-dev-1-pg02-bold-text-transform: none;
+  --typography-www-connorlow-dev-1-pg02-bold-letter-spacing: 0.24px;
+  --typography-www-connorlow-dev-1-pg02-bold-font-variation-settings: "GRAD" 150;
+}
+
+@media (min-width: 720) {
+  :root {
+    --typography-www-connorlow-dev-1-ht-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-ht-font-size: 64px;
+    --typography-www-connorlow-dev-1-ht-font-weight: 120;
+    --typography-www-connorlow-dev-1-ht-line-height: 1;
+    --typography-www-connorlow-dev-1-ht-text-transform: uppercase;
+    --typography-www-connorlow-dev-1-ht-letter-spacing: 0.6px;
+    --typography-www-connorlow-dev-1-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
+    --typography-www-connorlow-dev-1-hs-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hs-font-size: 28px;
+    --typography-www-connorlow-dev-1-hs-font-weight: 120;
+    --typography-www-connorlow-dev-1-hs-line-height: 32px;
+    --typography-www-connorlow-dev-1-hs-text-transform: lowercase;
+    --typography-www-connorlow-dev-1-hs-letter-spacing: 1px;
+    --typography-www-connorlow-dev-1-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 56;
+    --typography-www-connorlow-dev-1-hl01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl01-font-size: 46px;
+    --typography-www-connorlow-dev-1-hl01-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl01-line-height: 48px;
+    --typography-www-connorlow-dev-1-hl01-text-transform: none;
+    --typography-www-connorlow-dev-1-hl01-letter-spacing: 1.2px;
+    --typography-www-connorlow-dev-1-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-pg01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg01-font-size: 16px;
+    --typography-www-connorlow-dev-1-pg01-font-weight: 380;
+    --typography-www-connorlow-dev-1-pg01-line-height: 24px;
+    --typography-www-connorlow-dev-1-pg01-text-transform: none;
+    --typography-www-connorlow-dev-1-pg01-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-pg01-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg01-bold-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg01-bold-font-size: 16px;
+    --typography-www-connorlow-dev-1-pg01-bold-font-weight: 620;
+    --typography-www-connorlow-dev-1-pg01-bold-line-height: 24px;
+    --typography-www-connorlow-dev-1-pg01-bold-text-transform: none;
+    --typography-www-connorlow-dev-1-pg01-bold-letter-spacing: 0.24px;
+    --typography-www-connorlow-dev-1-pg01-bold-font-variation-settings: "GRAD" 150;
+    --typography-www-connorlow-dev-1-ui01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-ui01-font-size: 16px;
+    --typography-www-connorlow-dev-1-ui01-font-weight: 380;
+    --typography-www-connorlow-dev-1-ui01-line-height: 1;
+    --typography-www-connorlow-dev-1-ui01-text-transform: none;
+    --typography-www-connorlow-dev-1-ui01-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-ui01-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-hl03-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl03-font-size: 30px;
+    --typography-www-connorlow-dev-1-hl03-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl03-line-height: 32px;
+    --typography-www-connorlow-dev-1-hl03-text-transform: none;
+    --typography-www-connorlow-dev-1-hl03-letter-spacing: 0.4px;
+    --typography-www-connorlow-dev-1-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-hl02-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl02-font-size: 36px;
+    --typography-www-connorlow-dev-1-hl02-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl02-line-height: 40px;
+    --typography-www-connorlow-dev-1-hl02-text-transform: none;
+    --typography-www-connorlow-dev-1-hl02-letter-spacing: 0.64px;
+    --typography-www-connorlow-dev-1-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-ms-font-family: 'Fira Code';
+    --typography-www-connorlow-dev-1-ms-font-size: 14px;
+    --typography-www-connorlow-dev-1-ms-font-weight: 320;
+    --typography-www-connorlow-dev-1-ms-line-height: 16px;
+    --typography-www-connorlow-dev-1-ms-text-transform: none;
+    --typography-www-connorlow-dev-1-ms-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-ms-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg02-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg02-font-size: 13px;
+    --typography-www-connorlow-dev-1-pg02-font-weight: 380;
+    --typography-www-connorlow-dev-1-pg02-line-height: 16px;
+    --typography-www-connorlow-dev-1-pg02-text-transform: none;
+    --typography-www-connorlow-dev-1-pg02-letter-spacing: 0.08px;
+    --typography-www-connorlow-dev-1-pg02-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg02-bold-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg02-bold-font-size: 13px;
+    --typography-www-connorlow-dev-1-pg02-bold-font-weight: 620;
+    --typography-www-connorlow-dev-1-pg02-bold-line-height: 16px;
+    --typography-www-connorlow-dev-1-pg02-bold-text-transform: none;
+    --typography-www-connorlow-dev-1-pg02-bold-letter-spacing: 0.24px;
+    --typography-www-connorlow-dev-1-pg02-bold-font-variation-settings: "GRAD" 150;
+  }
+}
+
+@media (min-width: 1008) {
+  :root {
+    --typography-www-connorlow-dev-1-ht-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-ht-font-size: 64px;
+    --typography-www-connorlow-dev-1-ht-font-weight: 120;
+    --typography-www-connorlow-dev-1-ht-line-height: 1;
+    --typography-www-connorlow-dev-1-ht-text-transform: uppercase;
+    --typography-www-connorlow-dev-1-ht-letter-spacing: 0.6px;
+    --typography-www-connorlow-dev-1-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
+    --typography-www-connorlow-dev-1-hs-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hs-font-size: 48px;
+    --typography-www-connorlow-dev-1-hs-font-weight: 120;
+    --typography-www-connorlow-dev-1-hs-line-height: 56px;
+    --typography-www-connorlow-dev-1-hs-text-transform: lowercase;
+    --typography-www-connorlow-dev-1-hs-letter-spacing: 1px;
+    --typography-www-connorlow-dev-1-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 128;
+    --typography-www-connorlow-dev-1-hl01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl01-font-size: 60px;
+    --typography-www-connorlow-dev-1-hl01-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl01-line-height: 64px;
+    --typography-www-connorlow-dev-1-hl01-text-transform: none;
+    --typography-www-connorlow-dev-1-hl01-letter-spacing: 1.28px;
+    --typography-www-connorlow-dev-1-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-pg01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg01-font-size: 18px;
+    --typography-www-connorlow-dev-1-pg01-font-weight: 380;
+    --typography-www-connorlow-dev-1-pg01-line-height: 24px;
+    --typography-www-connorlow-dev-1-pg01-text-transform: none;
+    --typography-www-connorlow-dev-1-pg01-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-pg01-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg01-bold-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg01-bold-font-size: 18px;
+    --typography-www-connorlow-dev-1-pg01-bold-font-weight: 620;
+    --typography-www-connorlow-dev-1-pg01-bold-line-height: 24px;
+    --typography-www-connorlow-dev-1-pg01-bold-text-transform: none;
+    --typography-www-connorlow-dev-1-pg01-bold-letter-spacing: 0.32px;
+    --typography-www-connorlow-dev-1-pg01-bold-font-variation-settings: "GRAD" 150;
+    --typography-www-connorlow-dev-1-ui01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-ui01-font-size: 18px;
+    --typography-www-connorlow-dev-1-ui01-font-weight: 380;
+    --typography-www-connorlow-dev-1-ui01-line-height: 1;
+    --typography-www-connorlow-dev-1-ui01-text-transform: none;
+    --typography-www-connorlow-dev-1-ui01-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-ui01-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-hl03-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl03-font-size: 40px;
+    --typography-www-connorlow-dev-1-hl03-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl03-line-height: 48px;
+    --typography-www-connorlow-dev-1-hl03-text-transform: none;
+    --typography-www-connorlow-dev-1-hl03-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-hl02-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl02-font-size: 50px;
+    --typography-www-connorlow-dev-1-hl02-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl02-line-height: 56px;
+    --typography-www-connorlow-dev-1-hl02-text-transform: none;
+    --typography-www-connorlow-dev-1-hl02-letter-spacing: 0.64px;
+    --typography-www-connorlow-dev-1-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-ms-font-family: 'Fira Code';
+    --typography-www-connorlow-dev-1-ms-font-size: 14px;
+    --typography-www-connorlow-dev-1-ms-font-weight: 320;
+    --typography-www-connorlow-dev-1-ms-line-height: 16px;
+    --typography-www-connorlow-dev-1-ms-text-transform: none;
+    --typography-www-connorlow-dev-1-ms-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-ms-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg02-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg02-font-size: 15px;
+    --typography-www-connorlow-dev-1-pg02-font-weight: 380;
+    --typography-www-connorlow-dev-1-pg02-line-height: 16px;
+    --typography-www-connorlow-dev-1-pg02-text-transform: none;
+    --typography-www-connorlow-dev-1-pg02-letter-spacing: 0;
+    --typography-www-connorlow-dev-1-pg02-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg02-bold-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg02-bold-font-size: 15px;
+    --typography-www-connorlow-dev-1-pg02-bold-font-weight: 620;
+    --typography-www-connorlow-dev-1-pg02-bold-line-height: 16px;
+    --typography-www-connorlow-dev-1-pg02-bold-text-transform: none;
+    --typography-www-connorlow-dev-1-pg02-bold-letter-spacing: 0.16px;
+    --typography-www-connorlow-dev-1-pg02-bold-font-variation-settings: "GRAD" 150;
+  }
+}
+
+@media (min-width: 1600) {
+  :root {
+    --typography-www-connorlow-dev-1-ht-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-ht-font-size: 128px;
+    --typography-www-connorlow-dev-1-ht-font-weight: 120;
+    --typography-www-connorlow-dev-1-ht-line-height: 1;
+    --typography-www-connorlow-dev-1-ht-text-transform: uppercase;
+    --typography-www-connorlow-dev-1-ht-letter-spacing: 0.4px;
+    --typography-www-connorlow-dev-1-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
+    --typography-www-connorlow-dev-1-hs-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hs-font-size: 54px;
+    --typography-www-connorlow-dev-1-hs-font-weight: 120;
+    --typography-www-connorlow-dev-1-hs-line-height: 64px;
+    --typography-www-connorlow-dev-1-hs-text-transform: lowercase;
+    --typography-www-connorlow-dev-1-hs-letter-spacing: 0.8px;
+    --typography-www-connorlow-dev-1-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 56;
+    --typography-www-connorlow-dev-1-hl01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl01-font-size: 60px;
+    --typography-www-connorlow-dev-1-hl01-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl01-line-height: 64px;
+    --typography-www-connorlow-dev-1-hl01-text-transform: none;
+    --typography-www-connorlow-dev-1-hl01-letter-spacing: 1.28px;
+    --typography-www-connorlow-dev-1-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-pg01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg01-font-size: 18px;
+    --typography-www-connorlow-dev-1-pg01-font-weight: 380;
+    --typography-www-connorlow-dev-1-pg01-line-height: 24px;
+    --typography-www-connorlow-dev-1-pg01-text-transform: none;
+    --typography-www-connorlow-dev-1-pg01-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-pg01-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg01-bold-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg01-bold-font-size: 18px;
+    --typography-www-connorlow-dev-1-pg01-bold-font-weight: 620;
+    --typography-www-connorlow-dev-1-pg01-bold-line-height: 24px;
+    --typography-www-connorlow-dev-1-pg01-bold-text-transform: none;
+    --typography-www-connorlow-dev-1-pg01-bold-letter-spacing: 0.32px;
+    --typography-www-connorlow-dev-1-pg01-bold-font-variation-settings: "GRAD" 150;
+    --typography-www-connorlow-dev-1-ui01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-ui01-font-size: 18px;
+    --typography-www-connorlow-dev-1-ui01-font-weight: 380;
+    --typography-www-connorlow-dev-1-ui01-line-height: 1;
+    --typography-www-connorlow-dev-1-ui01-text-transform: none;
+    --typography-www-connorlow-dev-1-ui01-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-ui01-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-hl03-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl03-font-size: 40px;
+    --typography-www-connorlow-dev-1-hl03-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl03-line-height: 48px;
+    --typography-www-connorlow-dev-1-hl03-text-transform: none;
+    --typography-www-connorlow-dev-1-hl03-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-hl02-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl02-font-size: 50px;
+    --typography-www-connorlow-dev-1-hl02-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl02-line-height: 56px;
+    --typography-www-connorlow-dev-1-hl02-text-transform: none;
+    --typography-www-connorlow-dev-1-hl02-letter-spacing: 0.64px;
+    --typography-www-connorlow-dev-1-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-ms-font-family: 'Fira Code';
+    --typography-www-connorlow-dev-1-ms-font-size: 14px;
+    --typography-www-connorlow-dev-1-ms-font-weight: 320;
+    --typography-www-connorlow-dev-1-ms-line-height: 16px;
+    --typography-www-connorlow-dev-1-ms-text-transform: none;
+    --typography-www-connorlow-dev-1-ms-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-ms-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg02-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg02-font-size: 15px;
+    --typography-www-connorlow-dev-1-pg02-font-weight: 380;
+    --typography-www-connorlow-dev-1-pg02-line-height: 16px;
+    --typography-www-connorlow-dev-1-pg02-text-transform: none;
+    --typography-www-connorlow-dev-1-pg02-letter-spacing: 0;
+    --typography-www-connorlow-dev-1-pg02-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg02-bold-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg02-bold-font-size: 15px;
+    --typography-www-connorlow-dev-1-pg02-bold-font-weight: 620;
+    --typography-www-connorlow-dev-1-pg02-bold-line-height: 16px;
+    --typography-www-connorlow-dev-1-pg02-bold-text-transform: none;
+    --typography-www-connorlow-dev-1-pg02-bold-letter-spacing: 0.16px;
+    --typography-www-connorlow-dev-1-pg02-bold-font-variation-settings: "GRAD" 150;
+  }
+}
+
+@media (min-width: 2560) {
+  :root {
+    --typography-www-connorlow-dev-1-ht-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-ht-font-size: 128px;
+    --typography-www-connorlow-dev-1-ht-font-weight: 120;
+    --typography-www-connorlow-dev-1-ht-line-height: 1;
+    --typography-www-connorlow-dev-1-ht-text-transform: uppercase;
+    --typography-www-connorlow-dev-1-ht-letter-spacing: 0.4px;
+    --typography-www-connorlow-dev-1-ht-font-variation-settings: "wdth" 128, "GRAD" -180;
+    --typography-www-connorlow-dev-1-hs-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hs-font-size: 54px;
+    --typography-www-connorlow-dev-1-hs-font-weight: 120;
+    --typography-www-connorlow-dev-1-hs-line-height: 64px;
+    --typography-www-connorlow-dev-1-hs-text-transform: lowercase;
+    --typography-www-connorlow-dev-1-hs-letter-spacing: 0.8px;
+    --typography-www-connorlow-dev-1-hs-font-variation-settings: "wdth" 128, "GRAD" 100, "opsz" 56;
+    --typography-www-connorlow-dev-1-hl01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl01-font-size: 60px;
+    --typography-www-connorlow-dev-1-hl01-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl01-line-height: 64px;
+    --typography-www-connorlow-dev-1-hl01-text-transform: none;
+    --typography-www-connorlow-dev-1-hl01-letter-spacing: 1.28px;
+    --typography-www-connorlow-dev-1-hl01-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-pg01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg01-font-size: 18px;
+    --typography-www-connorlow-dev-1-pg01-font-weight: 380;
+    --typography-www-connorlow-dev-1-pg01-line-height: 24px;
+    --typography-www-connorlow-dev-1-pg01-text-transform: none;
+    --typography-www-connorlow-dev-1-pg01-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-pg01-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg01-bold-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg01-bold-font-size: 18px;
+    --typography-www-connorlow-dev-1-pg01-bold-font-weight: 620;
+    --typography-www-connorlow-dev-1-pg01-bold-line-height: 24px;
+    --typography-www-connorlow-dev-1-pg01-bold-text-transform: none;
+    --typography-www-connorlow-dev-1-pg01-bold-letter-spacing: 0.32px;
+    --typography-www-connorlow-dev-1-pg01-bold-font-variation-settings: "GRAD" 150;
+    --typography-www-connorlow-dev-1-ui01-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-ui01-font-size: 18px;
+    --typography-www-connorlow-dev-1-ui01-font-weight: 380;
+    --typography-www-connorlow-dev-1-ui01-line-height: 1;
+    --typography-www-connorlow-dev-1-ui01-text-transform: none;
+    --typography-www-connorlow-dev-1-ui01-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-ui01-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-hl03-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl03-font-size: 40px;
+    --typography-www-connorlow-dev-1-hl03-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl03-line-height: 48px;
+    --typography-www-connorlow-dev-1-hl03-text-transform: none;
+    --typography-www-connorlow-dev-1-hl03-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-hl03-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-hl02-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-hl02-font-size: 50px;
+    --typography-www-connorlow-dev-1-hl02-font-weight: 580;
+    --typography-www-connorlow-dev-1-hl02-line-height: 56px;
+    --typography-www-connorlow-dev-1-hl02-text-transform: none;
+    --typography-www-connorlow-dev-1-hl02-letter-spacing: 0.64px;
+    --typography-www-connorlow-dev-1-hl02-font-variation-settings: "wdth" 120, "GRAD" 50;
+    --typography-www-connorlow-dev-1-ms-font-family: 'Fira Code';
+    --typography-www-connorlow-dev-1-ms-font-size: 14px;
+    --typography-www-connorlow-dev-1-ms-font-weight: 320;
+    --typography-www-connorlow-dev-1-ms-line-height: 16px;
+    --typography-www-connorlow-dev-1-ms-text-transform: none;
+    --typography-www-connorlow-dev-1-ms-letter-spacing: normal;
+    --typography-www-connorlow-dev-1-ms-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg02-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg02-font-size: 15px;
+    --typography-www-connorlow-dev-1-pg02-font-weight: 380;
+    --typography-www-connorlow-dev-1-pg02-line-height: 16px;
+    --typography-www-connorlow-dev-1-pg02-text-transform: none;
+    --typography-www-connorlow-dev-1-pg02-letter-spacing: 0;
+    --typography-www-connorlow-dev-1-pg02-font-variation-settings: normal;
+    --typography-www-connorlow-dev-1-pg02-bold-font-family: 'Roboto Flex';
+    --typography-www-connorlow-dev-1-pg02-bold-font-size: 15px;
+    --typography-www-connorlow-dev-1-pg02-bold-font-weight: 620;
+    --typography-www-connorlow-dev-1-pg02-bold-line-height: 16px;
+    --typography-www-connorlow-dev-1-pg02-bold-text-transform: none;
+    --typography-www-connorlow-dev-1-pg02-bold-letter-spacing: 0.16px;
+    --typography-www-connorlow-dev-1-pg02-bold-font-variation-settings: "GRAD" 150;
+  }
+}
+
+.typography-www-connorlow-dev-1-ht {
+  font-family: var(--typography-www-connorlow-dev-1-ht-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-ht-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-ht-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-ht-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-ht-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-ht-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-ht-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-hs {
+  font-family: var(--typography-www-connorlow-dev-1-hs-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-hs-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-hs-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-hs-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-hs-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-hs-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-hs-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-hl01 {
+  font-family: var(--typography-www-connorlow-dev-1-hl01-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-hl01-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-hl01-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-hl01-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-hl01-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-hl01-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-hl01-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-pg01 {
+  font-family: var(--typography-www-connorlow-dev-1-pg01-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-pg01-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-pg01-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-pg01-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-pg01-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-pg01-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-pg01-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-pg01-bold {
+  font-family: var(--typography-www-connorlow-dev-1-pg01-bold-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-pg01-bold-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-pg01-bold-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-pg01-bold-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-pg01-bold-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-pg01-bold-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-pg01-bold-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-ui01 {
+  font-family: var(--typography-www-connorlow-dev-1-ui01-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-ui01-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-ui01-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-ui01-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-ui01-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-ui01-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-ui01-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-hl03 {
+  font-family: var(--typography-www-connorlow-dev-1-hl03-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-hl03-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-hl03-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-hl03-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-hl03-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-hl03-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-hl03-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-hl02 {
+  font-family: var(--typography-www-connorlow-dev-1-hl02-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-hl02-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-hl02-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-hl02-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-hl02-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-hl02-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-hl02-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-ms {
+  font-family: var(--typography-www-connorlow-dev-1-ms-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-ms-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-ms-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-ms-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-ms-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-ms-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-ms-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-pg02 {
+  font-family: var(--typography-www-connorlow-dev-1-pg02-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-pg02-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-pg02-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-pg02-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-pg02-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-pg02-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-pg02-font-variation-settings);
+}
+
+.typography-www-connorlow-dev-1-pg02-bold {
+  font-family: var(--typography-www-connorlow-dev-1-pg02-bold-font-family);
+  font-size: var(--typography-www-connorlow-dev-1-pg02-bold-font-size);
+  font-weight: var(--typography-www-connorlow-dev-1-pg02-bold-font-weight);
+  line-height: var(--typography-www-connorlow-dev-1-pg02-bold-line-height);
+  text-transform: var(--typography-www-connorlow-dev-1-pg02-bold-text-transform);
+  letter-spacing: var(--typography-www-connorlow-dev-1-pg02-bold-letter-spacing);
+  font-variation-settings: var(--typography-www-connorlow-dev-1-pg02-bold-font-variation-settings);
+}

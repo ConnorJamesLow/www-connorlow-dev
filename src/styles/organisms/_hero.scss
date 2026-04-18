@@ -12,11 +12,11 @@
 
     .hero__title {
         margin-bottom: unit(4);
-        @include token-typography-hero01(light);
+        @include token-typography-ht(light);
     }
 
     .hero__subtitle {
-        @include token-typography-hero02(light);
+        @include token-typography-hs(light);
 
         @include token-media-min(lg) {
             padding-inline-start: unit(1);
