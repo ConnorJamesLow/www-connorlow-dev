@@ -32,13 +32,16 @@ body {
   @include token-typography-pg01();
 }
 
-p,
-a {
-  display: inline;
+p {
+  display: block;
+  + p {
+    margin-top: 1em;
+  }
 }
 
 a {
   color: inherit;
+  display: inline;
 
   &[target='_blank'] {
     &:after {
