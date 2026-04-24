@@ -9,23 +9,28 @@
     container-type: inline-size;
     max-width: var(--container-max);
     margin: 0 auto;
+    width: calc(100% - var(--container-padding-x, #{unit(4)}));
 
-    > .container__layout {
+    @include token-media-min(md) {
+        --container-padding-x: #{unit(12)};
+    }
+
+    >.container__layout {
         display: grid;
         grid-template-columns: repeat(var(--layout-columns, 1), 1fr);
-    
+
         @include token-container-query(sm) {
             --layout-columns: var(--layout-columns-sm);
         }
-    
+
         @include token-container-query(md) {
             --layout-columns: var(--layout-columns-md);
         }
-    
+
         @include token-container-query(lg) {
             --layout-columns: var(--layout-columns-lg);
         }
-    
+
         @include token-container-query(xl) {
             --layout-columns: var(--layout-columns-xl);
         }
