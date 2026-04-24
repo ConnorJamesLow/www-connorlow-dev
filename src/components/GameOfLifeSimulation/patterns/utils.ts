@@ -4,6 +4,7 @@ import { spaceships } from "./spaceships";
 import { stills } from "./stills";
 import { crackles } from "./crackles";
 import { guns } from "./guns";
+import logger from "../../../utils/logger";
 
 const patterns = {
     methuselahs,
@@ -69,7 +70,7 @@ export function getRandomPattern<T extends keyof typeof patterns>(
         category, 
         name
     ] = combinedCategories[Math.floor(Math.random() * combinedCategories.length)];
-    console.log('create:', category, name, 'at', offsetX, offsetY);
+    logger.log("create:", category, name, "at", offsetX, offsetY);
     return getLocalizedPattern(
         category as T,
         name as keyof typeof patterns[T],

@@ -27,9 +27,6 @@ export function getCellCount(gameId: u32): usize {
     if (!game) {
         return 0;
     }
-    console.log(`grid width: ${game.gridWidth}`);
-    console.log(`grid height: ${game.gridHeight}`);
-    console.log(`grid scale: ${game.gridScale}`);
     return game.gridWidth * game.gridHeight;
 }
 

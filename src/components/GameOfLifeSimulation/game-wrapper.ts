@@ -1,4 +1,5 @@
 import * as game from "wasm-as";
+import logger from "../../utils/logger";
 
 const { memory } = game;
 
@@ -15,7 +16,7 @@ export default class GameWrapper {
         this.scale = scale;
         this.color = color;
         this.gameId = game.createGame(width, height, scale, color);
-        console.log('game initialized with id', this.gameId);
+        logger.log("game initialized with id", this.gameId);
     }
 
     public nextFrame(): void {

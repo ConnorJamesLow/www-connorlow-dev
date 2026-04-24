@@ -2,6 +2,7 @@ import "./_game-of-life-simulation.scss";
 import * as patterns from "./patterns";
 import { lazy } from "../../utils/lazy";
 import { bumpUpToNearest } from "../../utils/math";
+import logger, { isClientDebugLoggingEnabled } from "../../utils/logger";
 
 type AddCellsMessage = {
     type: "addCells";
@@ -42,6 +43,7 @@ export class GameOfLifeSimulation extends HTMLElement {
                 fps: this.framesPerSecond,
                 viewportW: window.innerWidth,
                 viewportH: window.innerHeight,
+                debugLogging: isClientDebugLoggingEnabled(),
             },
             [offscreen],
         );
@@ -72,7 +74,6 @@ export class GameOfLifeSimulation extends HTMLElement {
         const maxHeight = bumpUpToNearest(
             screen.height + (scale * screen.height * 2 + 128), 64 * scale,
         );
-        console.log('maxHeight', maxHeight, 'requestedHeight', requestedHeight);
         return Math.min(maxHeight, requestedHeight);
     }
 
@@ -82,7 +83,6 @@ export class GameOfLifeSimulation extends HTMLElement {
         const maxWidth = bumpUpToNearest(
             (screen.width + (scale * screen.width * 2 + 128)), 64 * scale,
         );
-        console.log('maxWidth', maxWidth, 'requestedWidth', requestedWidth);
         return Math.min(maxWidth, requestedWidth);
     }
 
@@ -105,7 +105,7 @@ export class GameOfLifeSimulation extends HTMLElement {
 
     connectedCallback() {
         const { width: { value: width }, height: { value: height }, scale } = this;
-        console.log('width', width, 'height', height, 'scale', scale);
+        logger.log("width", width, "height", height, "scale", scale);
         const gridW = width / scale;
         const gridH = height / scale;
         this.style.setProperty("--scale", scale.toString());

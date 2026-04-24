@@ -1,6 +1,7 @@
 /// <reference lib="webworker" />
 import GameWrapper from "./game-wrapper.js";
 import * as patterns from "./patterns";
+import logger, { setLoggerEnabledOverride } from "../../utils/logger";
 
 type InitMessage = {
     type: "init";
@@ -12,6 +13,7 @@ type InitMessage = {
     fps: number;
     viewportW: number;
     viewportH: number;
+    debugLogging: boolean;
 };
 
 type AddCellsMessage = {
@@ -61,8 +63,10 @@ class GameOfLifeWorkerController {
             fps,
             viewportW,
             viewportH,
+            debugLogging,
         } = data;
 
+        setLoggerEnabledOverride(import.meta.env.DEV || debugLogging);
         this.game = new GameWrapper(width, height, scale, color);
         this.imageData = this.createImageData();
         this.seedInitialPatterns(viewportW, viewportH, scale);
@@ -143,7 +147,7 @@ class GameOfLifeWorkerController {
         try {
             this.ctx.putImageData(this.imageData, 0, 0);
         } catch (error) {
-            console.error("Error putting image data:", error);
+            logger.error("Error putting image data:", error);
         }
     }
 
