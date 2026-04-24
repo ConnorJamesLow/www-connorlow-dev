@@ -1,6 +1,7 @@
 import "./_game-of-life-simulation.scss";
 import * as patterns from "./patterns";
 import { lazy } from "../../utils/lazy";
+import { bumpUpToNearest } from "../../utils/math";
 
 type AddCellsMessage = {
     type: "addCells";
@@ -68,17 +69,21 @@ export class GameOfLifeSimulation extends HTMLElement {
     private calculateHeight() {
         const { scale } = this;
         const requestedHeight = parseInt(this.getAttribute("height") || "5120");
-        return screen.height < requestedHeight
-            ? (screen.height + (screen.height % 64) * scale) * 2 + 64
-            : requestedHeight;
+        const maxHeight = bumpUpToNearest(
+            screen.height + (scale * screen.height * 2 + 128), 64 * scale,
+        );
+        console.log('maxHeight', maxHeight, 'requestedHeight', requestedHeight);
+        return Math.min(maxHeight, requestedHeight);
     }
 
     private calculateWidth() {
         const { scale } = this;
         const requestedWidth = parseInt(this.getAttribute("width") || "5120");
-        return screen.width < requestedWidth
-            ? (screen.width + (screen.width % 64) * scale) + 64
-            : requestedWidth;
+        const maxWidth = bumpUpToNearest(
+            (screen.width + (scale * screen.width * 2 + 128)), 64 * scale,
+        );
+        console.log('maxWidth', maxWidth, 'requestedWidth', requestedWidth);
+        return Math.min(maxWidth, requestedWidth);
     }
 
     get scale() {

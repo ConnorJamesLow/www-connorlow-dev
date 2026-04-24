@@ -6,5 +6,6 @@ cmp-cgol-sim {
         image-rendering: pixelated;
         scale: var(--scale, 1);
         transform-origin: top left;
+        object-fit: cover;
     }
 }
