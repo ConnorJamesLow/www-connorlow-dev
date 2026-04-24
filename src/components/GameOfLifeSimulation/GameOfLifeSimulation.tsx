@@ -1,5 +1,6 @@
 import "./_game-of-life-simulation.scss";
 import * as patterns from "./patterns";
+import { lazy } from "../../utils/lazy";
 
 type AddCellsMessage = {
     type: "addCells";
@@ -12,7 +13,10 @@ export class GameOfLifeSimulation extends HTMLElement {
     private hasInitializedSimulation = false;
     private hasStartedAnimationLoop = false;
     private framesPerSecond: number =
-        process.env.NODE_ENV === "development" ? 3 : 60;
+        process.env.NODE_ENV === "development" ? 6 : 12;
+    private readonly height = lazy(() => this.calculateHeight());
+    private readonly width = lazy(() => this.calculateWidth());
+
     private readonly startAnimationLoopWhenReady = () => {
         if (this.hasStartedAnimationLoop || !this.isConnected) {
             return;
@@ -25,7 +29,7 @@ export class GameOfLifeSimulation extends HTMLElement {
             return;
         }
 
-        const { width, height, scale } = this;
+        const { width: { value: width }, height: { value: height }, scale } = this;
         this.worker.postMessage(
             {
                 type: "init",
@@ -50,8 +54,8 @@ export class GameOfLifeSimulation extends HTMLElement {
         const cx = clientX / scale;
         const cy = clientY / scale;
         const pattern = patterns.getRandomPattern(
-            [cx + 8, cx -8],
-            [cy + 8, cy -8],
+            [cx + 56, cx + 72],
+            [cy + 56, cy + 72],
             ["crackles", "methuselahs", "spaceships"],
         );
         const message: AddCellsMessage = {
@@ -61,18 +65,28 @@ export class GameOfLifeSimulation extends HTMLElement {
         this.worker?.postMessage(message);
     };
 
-    get height() {
-        return parseInt(this.getAttribute("height") || "5120");
+    private calculateHeight() {
+        const { scale } = this;
+        const requestedHeight = parseInt(this.getAttribute("height") || "5120");
+        return screen.height < requestedHeight
+            ? (screen.height + (screen.height % 64) * scale) * 2 + 64
+            : requestedHeight;
     }
-    get width() {
-        return parseInt(this.getAttribute("width") || "5120");
+
+    private calculateWidth() {
+        const { scale } = this;
+        const requestedWidth = parseInt(this.getAttribute("width") || "5120");
+        return screen.width < requestedWidth
+            ? (screen.width + (screen.width % 64) * scale) + 64
+            : requestedWidth;
     }
+
     get scale() {
         return parseInt(this.getAttribute("scale") || "2");
     }
 
     get cells() {
-        const { width, height, scale } = this;
+        const { width: { value: width }, height: { value: height }, scale } = this;
         return (width / scale) * (height / scale);
     }
 
@@ -85,7 +99,8 @@ export class GameOfLifeSimulation extends HTMLElement {
     }
 
     connectedCallback() {
-        const { width, height, scale } = this;
+        const { width: { value: width }, height: { value: height }, scale } = this;
+        console.log('width', width, 'height', height, 'scale', scale);
         const gridW = width / scale;
         const gridH = height / scale;
         this.style.setProperty("--scale", scale.toString());
